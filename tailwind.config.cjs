@@ -15,6 +15,10 @@ module.exports = {
       lg: "1200px",
       xl: "1700px",
     },
+    fontFamily: {
+      dmserif: ['DM Serif Display', 'serif'],
+      poppins: ['Poppins', 'sans-serif'],
+    }
   },
   plugins: [],
 }
