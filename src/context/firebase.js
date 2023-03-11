@@ -2,13 +2,13 @@ import { initializeApp } from "firebase/app";
 import { getFirestore, getDocs, collection, addDoc } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyARbqvkK2WVs4Jdj6Hr8EfS9ocAcEz6sDE",
-  authDomain: "ehealth-record-01.firebaseapp.com",
-  projectId: "ehealth-record-01",
-  storageBucket: "ehealth-record-01.appspot.com",
-  messagingSenderId: "266132758410",
-  appId: "1:266132758410:web:143a761f3a0b21be043273",
-  measurementId: "G-0RC9Z4GGQ5"
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain:process.env.REACT_APP_AUTH,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_BUCKET,
+  messagingSenderId: process.env.REACT_APP_SENDER_ID ,
+  appId: process.env.REACT_APP_APP_ID,
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID,
 };
 
 
