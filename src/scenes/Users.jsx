@@ -60,7 +60,7 @@ const Users =()=>{
         <UserTab />
         <UserTab />
         <UserTab />
-        <UserTab />
+        
 
         </div>
 
