@@ -12,7 +12,7 @@ function App() {
     <BrowserRouter>
     <Routes>
       <Route path="/" element={<Users />}></Route>
-      <Route path=':patient' element={<Patients></Patients>}></Route>
+      <Route path='/:patient' element={<Patients></Patients>}  ></Route>
       
     </Routes>
     </BrowserRouter>

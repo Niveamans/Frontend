@@ -1,6 +1,6 @@
 import React from 'react'
 
-const PatientDetails = (props) => {
+const PatientDetails = ({data}) => {
   return (
   
         
@@ -10,11 +10,12 @@ const PatientDetails = (props) => {
     <img alt='profile' src='/assets/react.svg' className=' basis-1/3 h-1/3'></img>
         </div>
     <div className=' font-poppins flex flex-col gap-3 w-max'>
-        <p>name : vikki</p>
-        <p>age: 19</p>
-        <p>sex: male</p>
-        <p> blood group: O+</p>
-        <p>mobile: 243576876</p>
+        <p>name : {data.name}</p>
+        <p>age: {data.age}</p>
+        <p>sex: {data.sex}</p>
+        <p> blood group: {data.bloodgroup}</p>
+        <p>mobile: {data.mobile}</p>
+        <p>DOB: {data.dob}</p>
     </div>
 </div>
 
