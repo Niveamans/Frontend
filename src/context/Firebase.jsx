@@ -1,6 +1,16 @@
 import { createContext, useContext, useState } from "react";
 import { initializeApp } from "firebase/app";
-import { getFirestore, getDocs, collection, addDoc, query } from "firebase/firestore";
+import {
+  getFirestore,
+  getDocs,
+  collection,
+  addDoc,
+  getDoc,
+  doc,
+  collectionGroup,
+  query,
+  where,
+} from "firebase/firestore";
 
 // Import Required Firebase Utility
 
@@ -9,7 +19,7 @@ const firebaseConfig = {
   authDomain: import.meta.env.VITE_APP_AUTH,
   projectId: import.meta.env.VITE_APP_PROJECT_ID,
   storageBucket: import.meta.env.VITE_APP_BUCKET,
-  messagingSenderId: import.meta.env.VITE_APP_SENDER_ID ,
+  messagingSenderId: import.meta.env.VITE_APP_SENDER_ID,
   appId: import.meta.env.VITE_APP_APP_ID,
   measurementId: import.meta.env.VITE_APP_MEASUREMENT_ID,
 };
@@ -26,43 +36,78 @@ export const useFirebase = () => {
 };
 
 export const FirebaseProvider = (props) => {
-  // const [allDocuments, setallDocuments] = useState([]);
+  // to store all the patients in the database
+  const [allPatientData, setAllPatientData] = useState([]);
 
-  // Create the required function for using the internal functions of the utility imported
-  const [patientData,setPatientData] = useState([]);
-  
+  const [patientDetail, setPatientDetail] = useState({});
 
-  
+  const [checkups, setCheckups] = useState([]);
+
+  // to store the patients of one doc
+  const [patientData, setPatientData] = useState([]);
+
+  // get all the patients in the database
   async function getAllDocuments(collectionName) {
     try {
+      // get all the documents in given collection
       const collectionData = await getDocs(collection(db, collectionName));
-      
-      
-    if(collectionName === "patients"){
-        setPatientData([]);
-        collectionData.forEach((doc) =>
-        {
-          setPatientData((prev) => {
-            return [...prev,doc.data()];
+
+      // iterate through each of the document and add them to the allPatientData state
+      if (collectionName === "patients") {
+        // reset the allPatientData state
+        setAllPatientData([]);
+        collectionData.forEach((doc) => {
+          setAllPatientData((prev) => {
+            return [...prev, doc.data()];
           });
-          console.log(doc.data())
-        
-        }  
-       
-        );
-  
-        
+          console.log(doc.data());
+        });
       }
-      
     } catch (error) {
       console.log(error);
     }
   }
 
+  // get all the patients of the given doctor
+  async function getAllPatientsOf(docId) {
+    try {
+      // query all the patients whose doctors array contains the given docId
+      const q = query(
+        collection(db, "patients"),
+        where("doctors", "array-contains", docId)
+      );
 
-  
+      // store the result in a const
+      const querySnapshot = await getDocs(q);
 
-  
+      // reset patient data state
+      setPatientData([]);
+
+      // iterate through each of the array elements and add them to the patientData state
+      querySnapshot.forEach((doc) => {
+        setPatientData((prev) => {
+          return [...prev, doc.data()];
+        });
+
+        console.log(doc.data());
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function getSubCollection(collectionName, docId, subCollectionName) {
+    const itemRef = doc(db, collectionName, docId);
+    const collectionRef = collection(itemRef, subCollectionName);
+    const subCollectionData = await getDocs(collectionRef);
+    if (collectionName === "patients" && subCollectionName == "checkups") {
+      setCheckups([]);
+      subCollectionData.forEach((docu) => {
+        setCheckups((prev) => [...prev, docu.data()]);
+        console.log(docu.data());
+      });
+    }
+  }
 
   return (
     <FirebaseContext.Provider
@@ -70,7 +115,11 @@ export const FirebaseProvider = (props) => {
         // Pass the functions created to be used globally
 
         getAllDocuments,
-        patientData
+        getAllPatientsOf,
+        patientData,
+        patientDetail,
+        getSubCollection,
+        checkups,
       }}
     >
       {props.children}
