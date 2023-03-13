@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import { initializeApp } from "firebase/app";
-import { getFirestore, getDocs, collection, addDoc } from "firebase/firestore";
+import { getFirestore, getDocs, collection, addDoc,getDoc,doc,collectionGroup } from "firebase/firestore";
 
 // Import Required Firebase Utility
 
@@ -28,10 +28,11 @@ export const useFirebase = () => {
 export const FirebaseProvider = (props) => {
   // const [allDocuments, setallDocuments] = useState([]);
 
-  // Create the required function for using the internal functions of the utility imported
-  const [patientData,setPatientData] = useState([]);
 
-  
+  const [patientData,setPatientData] = useState([]);
+  const [patientDetail,setPatientDetail] = useState({});
+  const [checkups,setCheckups] = useState([]);
+
   async function getAllDocuments(collectionName) {
     try {
       const collectionData = await getDocs(collection(db, collectionName));
@@ -45,6 +46,7 @@ export const FirebaseProvider = (props) => {
             return [...prev,doc.data()];
           });
           console.log(doc.data())
+          
         
         }  
        
@@ -58,8 +60,39 @@ export const FirebaseProvider = (props) => {
     }
   }
 
-  
+  async function getDocument(collectionName,docId){
+    try {
+    const snap = await getDoc(doc(db,collectionName,docId))
+      
+    if(collectionName==="patients"){
+      setPatientDetail(snap.data());
+      console.log(snap.data());
+      
+      
+    }
 
+
+
+    
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+
+  async function getSubCollection(collectionName,docId,subCollectionName){
+    const itemRef = doc(db,collectionName,docId)
+    const collectionRef = collection(itemRef,subCollectionName)
+    const subCollectionData = await getDocs(collectionRef)
+    if(collectionName==="patients" && subCollectionName=="checkups"){
+        setCheckups([]);
+        subCollectionData.forEach((docu)=>{
+          setCheckups((prev)=>[...prev,docu.data()]);
+          console.log(docu.data());
+        })
+    }
+
+  }
   
 
   return (
@@ -68,7 +101,11 @@ export const FirebaseProvider = (props) => {
         // Pass the functions created to be used globally
 
         getAllDocuments,
-        patientData
+        patientData,
+        getDocument,
+        patientDetail,
+        getSubCollection,
+        checkups,
       }}
     >
       {props.children}
