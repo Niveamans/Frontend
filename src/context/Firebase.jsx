@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import { initializeApp } from "firebase/app";
-import { getFirestore, getDocs, collection, addDoc } from "firebase/firestore";
+import { getFirestore, getDocs, collection, addDoc, query } from "firebase/firestore";
 
 // Import Required Firebase Utility
 
@@ -30,6 +30,7 @@ export const FirebaseProvider = (props) => {
 
   // Create the required function for using the internal functions of the utility imported
   const [patientData,setPatientData] = useState([]);
+  
 
   
   async function getAllDocuments(collectionName) {
@@ -57,6 +58,7 @@ export const FirebaseProvider = (props) => {
       console.log(error);
     }
   }
+
 
   
 

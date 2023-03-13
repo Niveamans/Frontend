@@ -1,4 +1,5 @@
 import {FaTrash} from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const UserTab =(props)=>{
     return(
@@ -6,7 +7,7 @@ const UserTab =(props)=>{
             <div className="flex bg-blue-200 justify-between rounded-lg mb-4 drop-shadow font-poppins">
 
 <div className="h-[60px] p-5 bg-blue-300 text-center rounded-lg text-blue-700">
-    {props.id}
+    {props.serial}
 </div>
 
 
@@ -37,18 +38,7 @@ const UserTab =(props)=>{
     
 </div>
 
-<div className="h-[60px] p-5 bg-blue-300 text-center rounded-lg text-blue-700">
-    
-    {props.actions &&
-    <div> {props.actions} </div>
-    }
 
-    {!props.actions &&
-     <FaTrash /> 
-    }
-    
-    
-</div>
 
 </div>
         </>
