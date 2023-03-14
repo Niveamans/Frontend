@@ -6,8 +6,16 @@ import { Link } from "react-router-dom";
 const Users = () => {
   const firebase = useFirebase();
 
-  const fetchPatientData = (docId) => {
+  const fetchPatientsData = (docId) => {
     const Data = firebase.getAllPatientsOf(docId);
+  };
+
+  const addPatient = (doctorId, patientId) => {
+    const Data = firebase.addPatientTo(doctorId, patientId);
+  };
+
+  const removePatient = (doctorId, patientId) => {
+    const Data = firebase.deletePatientfrom(doctorId, patientId);
   };
 
   const addOne = (index) => {
@@ -15,7 +23,7 @@ const Users = () => {
   };
 
   useEffect(() => {
-    Promise.all([fetchPatientData("001")]);
+    Promise.all([fetchPatientsData("001")]);
   }, []);
 
   return (

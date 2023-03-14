@@ -10,6 +10,9 @@ import {
   collectionGroup,
   query,
   where,
+  updateDoc,
+  arrayUnion,
+  arrayRemove,
 } from "firebase/firestore";
 
 // Import Required Firebase Utility
@@ -109,6 +112,36 @@ export const FirebaseProvider = (props) => {
     }
   }
 
+  // to add doctorId reference to the patient
+  async function addPatientTo(doctorId, patientId) {
+    try {
+      // get the document reference using the collection name and doc id
+      const patientRef = doc(db, "patients", patientId);
+
+      // update document by adding the new doctorId in the doctors array
+      await updateDoc(docRef, {
+        doctors: arrayUnion(doctorId),
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  // to delete doctorId reference to the patient
+  async function deletePatientfrom(doctorId, patientId) {
+    try {
+      // get the document reference using the collection name and doc id
+      const docRef = doc(db, "patients", patientId);
+
+      // update document by deleting the doctorId from the doctors array
+      await updateDoc(docRef, {
+        doctors: arrayRemove(doctorId),
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   return (
     <FirebaseContext.Provider
       value={{
@@ -116,6 +149,8 @@ export const FirebaseProvider = (props) => {
 
         getAllDocuments,
         getAllPatientsOf,
+        addPatientTo,
+        deletePatientfrom,
         patientData,
         patientDetail,
         getSubCollection,
