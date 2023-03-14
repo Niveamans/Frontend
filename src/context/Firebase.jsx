@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import { initializeApp } from "firebase/app";
-import { getFirestore, getDocs, collection, addDoc,getDoc,doc,collectionGroup } from "firebase/firestore";
+import { getFirestore, getDocs, collection, addDoc,getDoc,doc,collectionGroup,deleteDoc, query } from "firebase/firestore";
 
 // Import Required Firebase Utility
 
@@ -20,7 +20,7 @@ const firebaseApp = initializeApp(firebaseConfig);
 // Create an instance of the imported firebase utility
 
 const db = getFirestore(firebaseApp);
-
+let fs = getFirestore();
 export const useFirebase = () => {
   return useContext(FirebaseContext);
 };
@@ -94,6 +94,7 @@ export const FirebaseProvider = (props) => {
 
   }
   
+ 
 
   return (
     <FirebaseContext.Provider
