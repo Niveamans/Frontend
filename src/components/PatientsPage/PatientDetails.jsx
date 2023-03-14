@@ -15,7 +15,7 @@ const PatientDetails = ({data}) => {
 <div className=' bg-zinc-400 p-5'>
 <div className=' flex min-w-max w-max gap-3 h-[60%] my-5 mx-5 '>
 <div className=' rounded-full w-[40%]'>
-    <img alt='profile' src='/assets/react.svg' className='  '></img>
+    <img alt='profile' src='/assets/react.svg' className=' w-[125px]'></img>
         </div>
     <div className=' font-poppins flex flex-col gap-3 w-max'>
         <p>name : {data.name}</p>
