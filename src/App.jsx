@@ -4,6 +4,8 @@ import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Users from "./scenes/Users";
 import Patients from "./scenes/Patients";
+import Signup from "./scenes/Signup";
+import Login from "./scenes/Login";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -11,7 +13,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Users />}></Route>
+        <Route path='/' element={<Login />}></Route>
         <Route path='/:patient' element={<Patients></Patients>}></Route>
       </Routes>
     </BrowserRouter>
