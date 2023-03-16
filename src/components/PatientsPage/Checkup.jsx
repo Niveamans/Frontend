@@ -1,6 +1,7 @@
 import React from "react";
 import { Navigate, redirect, Link } from "react-router-dom";
 
+
 const Checkup = ({ data }) => {
   return (
     <Link to={`/checkups/${data.checkupId}`}>
