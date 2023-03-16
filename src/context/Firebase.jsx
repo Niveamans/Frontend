@@ -155,6 +155,18 @@ export const FirebaseProvider = (props) => {
       console.log(e);
     }
   }
+
+  //To update a document with data provided in params
+  async function updateDocument(collectionName,docId,data){
+    try {
+      const docRef = doc(db,collectionName,docId)
+      await updateDoc(docRef,data)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+  
+
   
 
   return (
@@ -170,7 +182,8 @@ export const FirebaseProvider = (props) => {
         patientDetail,
         getSubCollection,
         checkups,
-        getDocument
+        getDocument,
+        updateDocument,
       }}
     >
       {props.children}

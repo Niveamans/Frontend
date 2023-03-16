@@ -13,11 +13,13 @@
     "@styled-icons/material": "^10.47.0",
     "dotenv": "^16.0.3",
     "firebase": "^9.17.2",
+    "formik": "^2.2.9",
     "i": "^0.3.7",
     "npm": "^9.6.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
+    "react-modal": "^3.16.1",
     "react-router-dom": "^6.8.2"
   },
   "devDependencies": {
