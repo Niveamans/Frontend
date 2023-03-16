@@ -34,7 +34,7 @@ const firebaseApp = initializeApp(firebaseConfig);
 // Create an instance of the imported firebase utility
 
 const db = getFirestore(firebaseApp);
-
+let fs = getFirestore();
 export const useFirebase = () => {
   return useContext(FirebaseContext);
 };
@@ -51,6 +51,20 @@ export const FirebaseProvider = (props) => {
 
   // to store the patients of one doc
   const [patientData, setPatientData] = useState([]);
+
+
+
+  async function getDocument(collectionName,docId){
+   
+    const snap = await getDoc(doc(db,collectionName,docId))
+      
+    if(collectionName==="patients"){
+      setPatientDetail(snap.data());
+      console.log(snap.data());
+      
+      
+    }
+  }
 
   // get all the patients in the database
   async function getAllDocuments(collectionName) {
@@ -180,6 +194,19 @@ export const FirebaseProvider = (props) => {
     }
   }
 
+  //To update a document with data provided in params
+  async function updateDocument(collectionName,docId,data){
+    try {
+      const docRef = doc(db,collectionName,docId)
+      await updateDoc(docRef,data)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+  
+
+  
+
   return (
     <FirebaseContext.Provider
       value={{
@@ -196,6 +223,8 @@ export const FirebaseProvider = (props) => {
         doctorData,
         getSubCollection,
         checkups,
+        getDocument,
+        updateDocument,
       }}
     >
       {props.children}

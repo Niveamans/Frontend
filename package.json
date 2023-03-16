@@ -10,8 +10,10 @@
     "tail-start": "npx tailwindcss -i ./src/index.css -o ./public/output.css --watch"
   },
   "dependencies": {
+    "@styled-icons/material": "^10.47.0",
     "dotenv": "^16.0.3",
     "firebase": "^9.17.2",
+    "formik": "^2.2.9",
     "formik": "^2.2.9",
     "i": "^0.3.7",
     "npm": "^9.6.1",
@@ -20,7 +22,8 @@
     "react-icons": "^4.8.0",
     "react-router-dom": "^6.8.2",
     "uuidv4": "^6.2.13",
-    "yup": "^1.0.2"
+    "yup": "^1.0.2",
+    "react-modal": "^3.16.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",

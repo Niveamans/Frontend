@@ -3,6 +3,7 @@ import PatientDetails from "../components/PatientsPage/PatientDetails";
 import Checkup from "../components/PatientsPage/Checkup";
 import { useParams } from "react-router-dom";
 import { useFirebase } from "../context/Firebase";
+import { Add } from "@styled-icons/material";
 const Patients = () => {
   const params = useParams();
   console.log(params.patient);
@@ -20,14 +21,25 @@ const Patients = () => {
   }, []);
   console.log(firebase.checkups);
 
+  function handleAddCheckup(){
+    
+  }
+
+
+
   return (
     <div className='flex md:flex-row flex-col items-center md:items-start'>
       <PatientDetails data={firebase.patientDetail}></PatientDetails>
       <div className='flex flex-col w-full  max-h-screen  gap-2 bg-slate-200'>
         <div className='flex justify-center mt-6'>
           <h1 className=' font-poppins md:text-3xl text-xl'>Checkups </h1>
+          
         </div>
-
+          <div className="ml-auto mr-3">
+          <button className="flex px-4 py-2 min-w-max " onClick={handleAddCheckup}>add a checkup</button>
+          </div>
+   
+        
         <div className=' max-h-full overflow-y-scroll'>
           {firebase.checkups.map((item) => (
             <Checkup data={item}></Checkup>
