@@ -1,18 +1,23 @@
 import React from "react";
 import { Navigate, redirect, Link } from "react-router-dom";
 
-
-const Checkup = ({ data }) => {
+const Checkup = ({ data, index }) => {
   return (
     <Link to={`/checkups/${data.checkupId}`}>
-      <div className=' h-9 mx-12 bg-gray-400 flex items-center justify-evenly mb-5 cursor-pointer'>
-        <div>
+      <div className='bg-blue-500 flex items-center justify-evenly mb-5 cursor-pointer rounded-sm text-blue-50'>
+        <div className='px-5 py-2'>
+          <p>{index}</p>
+        </div>
+        |
+        <div className='px-5 py-2'>
           <p>Date: {data.date}</p>
         </div>
-        <div>
+        |
+        <div className='px-5 py-2'>
           <p>Doctor: prem</p>
         </div>
-        <div>
+        |
+        <div className='px-5 py-2'>
           <p>Diagnosis: {data.diagnosis}</p>
         </div>
       </div>
