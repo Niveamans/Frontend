@@ -21,28 +21,30 @@ const Patients = () => {
   }, []);
   console.log(firebase.checkups);
 
-  function handleAddCheckup(){
-    
-  }
-
-
+  function handleAddCheckup() {}
 
   return (
-    <div className='flex md:flex-row flex-col items-center md:items-start'>
+    <div className='flex md:flex-row flex-col items-center md:items-start gap-2 text-[17px]'>
       <PatientDetails data={firebase.patientDetail}></PatientDetails>
-      <div className='flex flex-col w-full  max-h-screen  gap-2 bg-slate-200'>
-        <div className='flex justify-center mt-6'>
-          <h1 className=' font-poppins md:text-3xl text-xl'>Checkups </h1>
-          
-        </div>
-          <div className="ml-auto mr-3">
-          <button className="flex px-4 py-2 min-w-max " onClick={handleAddCheckup}>add a checkup</button>
+      <div className='flex flex-col w-full max-h-screen gap-2 p-5 py-8 bg-blue-300 rounded-lg'>
+        <div className='flex justify-between mb-5'>
+          <h1 className='font-dmserif md:text-[45px] text-xl text-white'>
+            Checkups{" "}
+          </h1>
+
+          <div className='ml-auto'>
+            <button
+              className='flex px-4 py-2 min-w-max bg-blue-500 rounded-md text-white'
+              onClick={handleAddCheckup}
+            >
+              New checkup
+            </button>
           </div>
-   
-        
-        <div className=' max-h-full overflow-y-scroll'>
-          {firebase.checkups.map((item) => (
-            <Checkup data={item}></Checkup>
+        </div>
+
+        <div className='max-h-full overflow-y-scroll rounded-md'>
+          {firebase.checkups.map((item, index) => (
+            <Checkup data={item} index={index + 1}></Checkup>
           ))}
         </div>
       </div>
