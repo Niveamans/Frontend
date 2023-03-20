@@ -2,8 +2,9 @@ import React from "react";
 import { Navigate, redirect, Link } from "react-router-dom";
 
 const Checkup = ({ data, index }) => {
+  const pathname = window.location.pathname;
   return (
-    <Link to={`/checkups/${data.checkupId}`}>
+    <Link to={`${pathname}/${data.checkupId}`}>
       <div className='bg-blue-500 flex items-center justify-evenly mb-5 cursor-pointer rounded-sm text-blue-50'>
         <div className='px-5 py-2'>
           <p>{index}</p>

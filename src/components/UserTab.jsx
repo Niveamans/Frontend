@@ -4,17 +4,9 @@ import { Link } from "react-router-dom";
 const UserTab = (props) => {
   return (
     <>
-      <div className='flex bg-blue-200 justify-between rounded-lg mb-4 drop-shadow font-poppins'>
-        <div className='h-[60px] p-5 bg-blue-300 text-center rounded-lg text-blue-700'>
-          {props.serial}
-        </div>
-
-        <div className='w-5/6 flex h-[60px]  justify-between bg-blue-300 items-center py-5 px-10 rounded-lg'>
-          <div className='font-bold text-blue-900'>{props.name}</div>|
-          <div className='text-blue-900'>{props.age}</div>|
-          <div className='text-blue-900'>{props.bloodgroup}</div>|
-          <div className='text-blue-900'>{props.sex}</div>
-        </div>
+      <div className='flex bg-blue-500 text-white justify-evenly rounded-md p-5 mb-4 drop-shadow font-poppins'>
+        <div>{props.serial}</div>|<div>{props.name}</div>|<div>{props.age}</div>
+        |<div>{props.bloodgroup}</div>|<div>{props.sex}</div>
       </div>
     </>
   );

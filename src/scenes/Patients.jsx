@@ -1,55 +1,79 @@
-import React, { useEffect } from "react";
-import PatientDetails from "../components/PatientsPage/PatientDetails";
-import Checkup from "../components/PatientsPage/Checkup";
-import { useParams } from "react-router-dom";
+import UserTab from "../components/UserTab";
+import { useEffect } from "react";
 import { useFirebase } from "../context/Firebase";
-import { Add } from "@styled-icons/material";
-const Patients = () => {
-  const params = useParams();
-  console.log(params.patient);
+import { Link } from "react-router-dom";
+import { getAuth, signOut } from "firebase/auth";
+
+const Users = () => {
   const firebase = useFirebase();
 
-  //  function fetchDoc(){
-  //     const Doc = firebase.getDocument("patients",params.patient)
-  //   }
+  const fetchPatientsData = (docId) => {
+    const Data = firebase.getAllPatientsOf(docId);
+  };
+
+  const addPatient = (doctorId, patientId) => {
+    const Data = firebase.addPatientTo(doctorId, patientId);
+  };
+
+  const removePatient = (doctorId, patientId) => {
+    const Data = firebase.deletePatientfrom(doctorId, patientId);
+  };
+
+  const addOne = (index) => {
+    return index + 1;
+  };
 
   useEffect(() => {
-    Promise.all([
-      firebase.getDocument("patients", params.patient),
-      firebase.getSubCollection("patients", params.patient, "checkups"),
-    ]);
+    Promise.all([fetchPatientsData("001")]);
   }, []);
-  console.log(firebase.checkups);
 
-  function handleAddCheckup() {}
+  const auth = getAuth();
 
   return (
-    <div className='flex md:flex-row flex-col items-center md:items-start gap-2 text-[17px]'>
-      <PatientDetails data={firebase.patientDetail}></PatientDetails>
-      <div className='flex flex-col w-full max-h-screen gap-2 p-5 py-8 bg-blue-300 rounded-lg'>
-        <div className='flex justify-between mb-5'>
-          <h1 className='font-dmserif md:text-[45px] text-xl text-white'>
-            Checkups{" "}
-          </h1>
-
-          <div className='ml-auto'>
-            <button
-              className='flex px-4 py-2 min-w-max bg-blue-500 rounded-md text-white'
-              onClick={handleAddCheckup}
-            >
-              New checkup
-            </button>
-          </div>
+    <>
+      <div className='w-5/6 mx-auto p-4 bg-blue-300 rounded-b-lg font-poppins'>
+        <div className='flex justify-between items-center mb-4'>
+          <p className='text-[45px] font-dmserif text-white'>Patients</p>
+          <button
+            className='px-4 py-2 bg-blue-500 text-white rounded-md'
+            onClick={() => {
+              signOut(auth)
+                .then(() => {
+                  console.log("signed out");
+                })
+                .catch((error) => {
+                  console.log(error);
+                });
+            }}
+          >
+            Logout
+          </button>
         </div>
+        <UserTab
+          serial='S.No'
+          name='Name'
+          sex='Sex'
+          age='Age'
+          bloodgroup='Blood'
+        />
 
-        <div className='max-h-full overflow-y-scroll rounded-md'>
-          {firebase.checkups.map((item, index) => (
-            <Checkup data={item} index={index + 1}></Checkup>
-          ))}
-        </div>
+        {firebase.patientData.map((patient, index) => {
+          return (
+            <Link to={`/${patient.patientId}`}>
+              <UserTab
+                serial={addOne(index)}
+                key={patient.mobile}
+                name={patient.name}
+                sex={patient.sex}
+                age={patient.age}
+                bloodgroup={patient.bloodgroup}
+              />{" "}
+            </Link>
+          );
+        })}
       </div>
-    </div>
+    </>
   );
 };
 
-export default Patients;
+export default Users;
