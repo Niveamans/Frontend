@@ -1,0 +1,32 @@
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    background-color: lightblue;
+   
+   }
+   
+   #navbar
+   {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     height: 60px;
+     background-color: blue;
+   }
+   
+   #navbar li{
+     list-style: none;
+     padding: 0 20px;
+     position: relative;
+   }
+   
+   #navbar li a{
+     text-decoration: none;
+     font-size: 1.3rem;
+     font-weight: 600;
+   }
+   
+   #navbar li a:hover{
+     color: black;
+   }

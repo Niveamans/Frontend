@@ -8,7 +8,9 @@ import Signup from "./scenes/Signup";
 import Login from "./scenes/Login";
 import EditModal from "./components/PatientsPage/EditModal";
 import EditForm from "./components/PatientsPage/EditForm";
+import Navbar from "./components/Navbar/Navbar";
 import { useFirebase } from "./context/Firebase";
+
 function App() {
   const [count, setCount] = useState(0);
   const firebase = useFirebase();
@@ -19,6 +21,8 @@ function App() {
   return (
     <div>
       <BrowserRouter>
+        <Navbar />
+        <br></br>
         <Routes>
           <Route
             path='/'
