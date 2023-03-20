@@ -15,6 +15,7 @@ import {
   arrayRemove,
   setDoc,
 } from "firebase/firestore";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 // Import Required Firebase Utility
 
@@ -30,6 +31,7 @@ const firebaseConfig = {
 
 const FirebaseContext = createContext(null);
 const firebaseApp = initializeApp(firebaseConfig);
+const auth = getAuth();
 
 // Create an instance of the imported firebase utility
 
@@ -49,20 +51,26 @@ export const FirebaseProvider = (props) => {
 
   const [doctorData, setDoctorData] = useState([]);
 
+  const [isLoggedIn, setIsLoggedIn] = useState();
+
+  const [checkupId, setCheckupId] = useState([]);
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  });
+
   // to store the patients of one doc
   const [patientData, setPatientData] = useState([]);
 
+  async function getDocument(collectionName, docId) {
+    const snap = await getDoc(doc(db, collectionName, docId));
 
-
-  async function getDocument(collectionName,docId){
-   
-    const snap = await getDoc(doc(db,collectionName,docId))
-      
-    if(collectionName==="patients"){
+    if (collectionName === "patients") {
       setPatientDetail(snap.data());
-      console.log(snap.data());
-      
-      
     }
   }
 
@@ -116,7 +124,7 @@ export const FirebaseProvider = (props) => {
     }
   }
 
-  async function getSubCollection(collectionName, docId, subCollectionName) {
+  async function getSubCollections(collectionName, docId, subCollectionName) {
     const itemRef = doc(db, collectionName, docId);
     const collectionRef = collection(itemRef, subCollectionName);
     const subCollectionData = await getDocs(collectionRef);
@@ -188,6 +196,7 @@ export const FirebaseProvider = (props) => {
       // set the doctor data so that you can access it anywhere once the user has logged in
       data.forEach((doc) => {
         setDoctorData(doc.data());
+        console.log(doc.data());
       });
     } catch (e) {
       console.log(e);
@@ -195,17 +204,14 @@ export const FirebaseProvider = (props) => {
   }
 
   //To update a document with data provided in params
-  async function updateDocument(collectionName,docId,data){
+  async function updateDocument(collectionName, docId, data) {
     try {
-      const docRef = doc(db,collectionName,docId)
-      await updateDoc(docRef,data)
+      const docRef = doc(db, collectionName, docId);
+      await updateDoc(docRef, data);
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
   }
-  
-
-  
 
   return (
     <FirebaseContext.Provider
@@ -218,10 +224,13 @@ export const FirebaseProvider = (props) => {
         deletePatientfrom,
         setDoctor,
         getDoctor,
+        checkupId,
+        isLoggedIn,
+        setIsLoggedIn,
         patientData,
         patientDetail,
         doctorData,
-        getSubCollection,
+        getSubCollections,
         checkups,
         getDocument,
         updateDocument,

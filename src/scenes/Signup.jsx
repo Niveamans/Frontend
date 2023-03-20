@@ -47,6 +47,7 @@ const Signup = () => {
                     // Signed in
                     const user = userCredential.user;
                     console.log(userCredential);
+                    firebase.setIsLoggedIn(true);
 
                     // ...
                   })
