@@ -13,13 +13,15 @@ function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Login />}></Route>
-        <Route path='/:patient' element={<Patients></Patients>}></Route>
-        <Route path='/test' element={<EditModal></EditModal>}></Route>
-      </Routes>
-    </BrowserRouter>
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Login />}></Route>
+          <Route path='/:patient' element={<Patients></Patients>}></Route>
+          <Route path='/test' element={<EditModal></EditModal>}></Route>
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 
