@@ -6,9 +6,6 @@ import Patients from "./scenes/Patients";
 import Patient from "./scenes/Patient";
 import Signup from "./scenes/Signup";
 import Login from "./scenes/Login";
-import EditModal from "./components/PatientsPage/EditModal";
-import EditForm from "./components/PatientsPage/EditForm";
-import Navbar from "./components/Navbar/Navbar";
 import { useFirebase } from "./context/Firebase";
 
 function App() {
@@ -21,8 +18,7 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-        <Navbar />
-        <br></br>
+
         <Routes>
           <Route
             path='/'
@@ -34,7 +30,7 @@ function App() {
           ></Route>
           <Route path='/:patientid' element={<Patient></Patient>}></Route>
 
-          <Route path='/test' element={<EditModal></EditModal>}></Route>
+          
         </Routes>
       </BrowserRouter>
     </div>

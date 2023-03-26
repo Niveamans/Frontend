@@ -1,30 +1,52 @@
 import UserTab from "../components/UserTab";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useFirebase } from "../context/Firebase";
 import { Link } from "react-router-dom";
 import { getAuth, signOut } from "firebase/auth";
+import Search from "../components/Dashboard/Search";
+import ModalTemplate from "../components/Modal/Modal";
+import CreatePatientForm from "../components/Dashboard/CreatePatient";
+
+
 
 const Users = () => {
   const firebase = useFirebase();
-
+  const [addModal,setAddModal] = useState(false); 
+  const [createModal,setCreateModal] =  useState(false);
   const fetchPatientsData = (docId) => {
     const Data = firebase.getAllPatientsOf(docId);
   };
 
-  const addPatient = (doctorId, patientId) => {
-    const Data = firebase.addPatientTo(doctorId, patientId);
+  const addPatient = ( patientId) => {
+    const Data = firebase.addPatientTo("001", patientId);
   };
 
-  const removePatient = (doctorId, patientId) => {
-    const Data = firebase.deletePatientfrom(doctorId, patientId);
-  };
+  const createPatient = async(values)=>{
+    console.log(values);
+    handleClosePatient();
+    location.reload();
+  }
 
   const addOne = (index) => {
     return index + 1;
   };
+  const handleAddPatient = ()=>{
+      setAddModal(true)
+  }
+  const handleClosePatient = ()=>{
+    setAddModal(false)
+    setCreateModal(false)
+  } 
+const handleCreatePatient=()=>{
+    setCreateModal(true)
+}
+
+
+
+ 
 
   useEffect(() => {
-    Promise.all([fetchPatientsData("001")]);
+    Promise.all([fetchPatientsData("001"),firebase.getAllDocuments("patients")]);
   }, []);
 
   const auth = getAuth();
@@ -34,7 +56,7 @@ const Users = () => {
       <div className='w-5/6 mx-auto p-4 bg-blue-300 rounded-b-lg font-poppins'>
         <div className='flex justify-between items-center mb-4'>
           <p className='text-[45px] font-dmserif text-white'>Patients</p>
-          <button
+          {/* <button
             className='px-4 py-2 bg-blue-500 text-white rounded-md'
             onClick={() => {
               signOut(auth)
@@ -47,7 +69,20 @@ const Users = () => {
             }}
           >
             Logout
+          </button> */}
+          <button
+            className='px-4 py-2 bg-blue-500 text-white rounded-md'
+           onClick={handleAddPatient}
+          >
+            Add patient
           </button>
+          <button
+            className='px-4 py-2 bg-blue-500 text-white rounded-md'
+           onClick={handleCreatePatient}
+          >
+            create a patient
+          </button>
+
         </div>
         <UserTab
           serial='S.No'
@@ -71,6 +106,31 @@ const Users = () => {
             </Link>
           );
         })}
+
+<ModalTemplate
+      openModal={handleAddPatient}
+          open={addModal}
+          closeModal={handleClosePatient}
+
+>
+<Search data={firebase.allPatientData} handleSave={addPatient}></Search>
+  
+</ModalTemplate>
+
+<ModalTemplate
+ openModal={handleCreatePatient}
+          open={createModal}
+          closeModal={handleClosePatient}
+>
+        <CreatePatientForm
+        handleSave={createPatient}
+        >
+
+        </CreatePatientForm>
+</ModalTemplate>
+
+
+
       </div>
     </>
   );

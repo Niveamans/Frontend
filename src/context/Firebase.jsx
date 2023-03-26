@@ -234,6 +234,7 @@ export const FirebaseProvider = (props) => {
         checkups,
         getDocument,
         updateDocument,
+        allPatientData
       }}
     >
       {props.children}

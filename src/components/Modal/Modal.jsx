@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
-import EditForm from "./EditForm";
-
+import { Close } from "@styled-icons/material";
 const customStyles = {
   content: {
     width: "max-content",
@@ -14,7 +13,7 @@ const customStyles = {
 // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
 //Modal.setAppElement('#root');
 
-const EditModal = ({ openModal, closeModal, open, handleSave, data }) => {
+const ModalTemplate = ({children, openModal, closeModal, open, data, handleSave }) => {
   return (
     <div>
       {open ? (
@@ -23,13 +22,16 @@ const EditModal = ({ openModal, closeModal, open, handleSave, data }) => {
           onRequestClose={closeModal}
           style={customStyles}
           contentLabel='Example Modal'
-          className='bg-blue-300 rounded-lg p-5 px-8'
+          className='bg-blue-300 rounded-lg p-5 px-8 relative overflow-y-scroll mt-4'
         >
-          <EditForm
-            data={data}
-            handleSave={handleSave}
-            closeModal={closeModal}
-          ></EditForm>
+         <Close
+          onClick={closeModal}
+          className='w-6 h-6  text-blue-900 hover:cursor-pointer absolute left-[90%] top-2 bottom-[90%]'
+        ></Close>
+         
+        
+        {children}
+        
         </Modal>
       ) : (
         <></>
@@ -38,4 +40,4 @@ const EditModal = ({ openModal, closeModal, open, handleSave, data }) => {
   );
 };
 
-export default EditModal;
+export default ModalTemplate;

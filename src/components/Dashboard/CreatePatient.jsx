@@ -2,12 +2,12 @@ import React from "react";
 import { Formik } from "formik";
 
 
-const EditForm = ({ data, handleSave}) => {
+const CreatePatientForm = ({ handleSave}) => {
   return (
     <div>
       <div className='flex justify-between items-center'>
         <h1 className='text-center font-dmserif text-white text-xl sm:text-2xl md:text-3xl my-5'>
-          Edit patient details
+          Create a patient
         </h1>
 
      
@@ -15,12 +15,12 @@ const EditForm = ({ data, handleSave}) => {
 
       <Formik
         initialValues={{
-          name: data.name,
+          name: '',
           // age: data.age,
-          sex: data.sex,
+          sex: '',
           // bloodGroup: data.bloodgroup,
           // mobile: data.mobile,
-          dob: data.dob,
+          dob: '',
         }}
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
@@ -145,4 +145,4 @@ const EditForm = ({ data, handleSave}) => {
   );
 };
 
-export default EditForm;
+export default CreatePatientForm;

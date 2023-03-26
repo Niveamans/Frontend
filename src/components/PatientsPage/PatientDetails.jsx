@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { useFirebase } from "../../context/Firebase";
 import { Delete, Edit } from "@styled-icons/material";
-import EditModal from "./EditModal";
+
 import PatientField from "./PatientField";
+import ModalTemplate from "../Modal/Modal";
+import EditForm from "./EditForm";
 
 const PatientDetails = ({ data }) => {
   const firebase = useFirebase();
-  const [isModal, setModal] = useState(false);
+  const [isEditModal, setEditModal] = useState(false);
   function handleClick() {
     // Promise.all([firebase.deleteDocument("patients","002")]);
   }
@@ -16,35 +18,40 @@ const PatientDetails = ({ data }) => {
   }
 
   function handleEdit() {
-    setModal(true);
+    setEditModal(true);
   }
-  function closeModal() {
-    setModal(false);
+  function closeEditModal() {
+    setEditModal(false);
   }
 
   async function handleEditSave(values) {
     console.log(values);
-    firebase.updateDocument("patients", data.patientId, values);
+    await firebase.updateDocument("patients", data.patientId, values);
+   closeEditModal();
+   location.reload();
   }
 
   return (
     <div className='bg-blue-300 p-5 w-full md:w-[40%] rounded-lg'>
       <div className='grid'>
-        <div className='mx-auto my-4'>
+        {/* <div className='mx-auto my-4'>
           <img
             alt='profile'
             src='/assets/react.svg'
             className='w-[125px]'
           ></img>
-        </div>
+        </div> */}
 
         <div className='font-poppins grid gap-2 p-5 min-w-[20ch] my-2 text-[17px] bg-blue-500 rounded-md'>
           <PatientField field='Name' data={data.name} />
-          <PatientField field='Age' data={data.age} />
+          {/* <PatientField field='Age' data={data.age} /> */}
           <PatientField field='Sex' data={data.sex} />
-          <PatientField field='Bloodgroup' data={data.bloodgroup} />
-          <PatientField field='Mobile' data={data.mobile} />
+          {/* <PatientField field='Bloodgroup' data={data.bloodgroup} /> */}
+          {/* <PatientField field='Mobile' data={data.mobile} /> */}
           <PatientField field='DOB' data={data.dob} />
+       
+       
+       
         </div>
 
         <div className='flex justify-between my-2 px-5 py-2 rounded-md bg-blue-500'>
@@ -60,13 +67,31 @@ const PatientDetails = ({ data }) => {
           ></Edit>
         </div>
 
-        <EditModal
-          openModal={handleEdit}
-          open={isModal}
-          closeModal={closeModal}
-          data={data}
-          handleSave={handleEditSave}
-        ></EditModal>
+ 
+
+        <ModalTemplate
+        openModal={handleEdit}
+          open={isEditModal}
+          closeModal={closeEditModal}
+        
+        >
+          <EditForm
+            data={data}
+            handleSave={handleEditSave}
+            closeModal={closeEditModal}
+          ></EditForm>
+        </ModalTemplate>
+
+
+
+
+
+
+
+
+
+
+
       </div>
     </div>
   );
