@@ -1,7 +1,5 @@
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { useFirebase } from "../context/Firebase";
 import { useState } from "react";
 
 const Login = () => {

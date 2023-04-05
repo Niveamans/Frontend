@@ -527,45 +527,26 @@ video {
   bottom: 0.25rem;
 }
 
-.left-\[90\%\]{
-  left: 90%;
-}
-
-.left-\[94\%\]{
-  left: 94%;
-}
-
-.bottom-\[\]{
-  bottom: ;
-}
-
-.bottom-\[95\%\]{
-  bottom: 95%;
-}
-
 .bottom-\[90\%\]{
   bottom: 90%;
 }
 
-.bottom-\[85\%\]{
-  bottom: 85%;
-}
-
-.bottom-\[80\%\]{
-  bottom: 80%;
+.left-\[90\%\]{
+  left: 90%;
 }
 
 .top-2{
   top: 0.5rem;
 }
 
-.m-5{
-  margin: 1.25rem;
-}
-
 .mx-auto{
   margin-left: auto;
   margin-right: auto;
+}
+
+.my-10{
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
 }
 
 .my-2{
@@ -581,11 +562,6 @@ video {
 .my-5{
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
-}
-
-.my-10{
-  margin-top: 2.5rem;
-  margin-bottom: 2.5rem;
 }
 
 .mb-3{
@@ -616,12 +592,16 @@ video {
   margin-top: 0.75rem;
 }
 
+.mt-4{
+  margin-top: 1rem;
+}
+
 .mt-6{
   margin-top: 1.5rem;
 }
 
-.mt-4{
-  margin-top: 1rem;
+.mr-2{
+  margin-right: 0.5rem;
 }
 
 .flex{
@@ -781,6 +761,11 @@ video {
 .bg-blue-500{
   --tw-bg-opacity: 1;
   background-color: rgb(59 130 246 / var(--tw-bg-opacity));
+}
+
+.bg-red-400{
+  --tw-bg-opacity: 1;
+  background-color: rgb(248 113 113 / var(--tw-bg-opacity));
 }
 
 .p-2{

@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import PatientDetails from "../components/PatientsPage/PatientDetails";
 import Checkup from "../components/PatientsPage/Checkup";
 import { useParams } from "react-router-dom";
-import { useFirebase } from "../context/Firebase";
 
 const Patients = () => {
   const params = useParams();

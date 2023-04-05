@@ -1,136 +1,74 @@
 import UserTab from "../components/UserTab";
 import { useEffect, useState } from "react";
-import { useFirebase } from "../context/Firebase";
 import { Link } from "react-router-dom";
-import { getAuth, signOut } from "firebase/auth";
 import Search from "../components/Dashboard/Search";
 import ModalTemplate from "../components/Modal/Modal";
-import CreatePatientForm from "../components/Dashboard/CreatePatient";
-
-
+import axios from "axios";
 
 const Users = () => {
-  const firebase = useFirebase();
-  const [addModal,setAddModal] = useState(false); 
-  const [createModal,setCreateModal] =  useState(false);
-  const fetchPatientsData = (docId) => {
-    const Data = firebase.getAllPatientsOf(docId);
-  };
+  const [patients, setPatients] = useState([]);
 
-  const addPatient = ( patientId) => {
-    const Data = firebase.addPatientTo("001", patientId);
-  };
+  function calculate_age(dob) {
+    var diff_ms = Date.now() - dob.getTime();
+    var age_dt = new Date(diff_ms);
 
-  const createPatient = async(values)=>{
-    console.log(values);
-    handleClosePatient();
-    location.reload();
+    return Math.abs(age_dt.getUTCFullYear() - 1970);
   }
 
-  const addOne = (index) => {
-    return index + 1;
-  };
-  const handleAddPatient = ()=>{
-      setAddModal(true)
+  async function getUsersOf(practitionerId) {
+    try {
+      const response = await axios.get(
+        `http://localhost:3000/practitioners/${practitionerId}`,
+        {
+          headers: {
+            function: "getPatients",
+          },
+        }
+      );
+
+      setPatients([]);
+      response.data.map((data) => {
+        console.log(data.resource);
+        setPatients((prev) => [...prev, data.resource]);
+      });
+    } catch (error) {
+      console.error(error);
+    }
   }
-  const handleClosePatient = ()=>{
-    setAddModal(false)
-    setCreateModal(false)
-  } 
-const handleCreatePatient=()=>{
-    setCreateModal(true)
-}
 
-
-
- 
-
-  useEffect(() => {
-    Promise.all([fetchPatientsData("001"),firebase.getAllDocuments("patients")]);
+  useEffect(async () => {
+    // await getUsersOf("9e4e4cf9-47a9-4bda-a65c-57adf6fc87e9");
   }, []);
-
-  const auth = getAuth();
 
   return (
     <>
       <div className='w-5/6 mx-auto p-4 bg-blue-300 rounded-b-lg font-poppins'>
         <div className='flex justify-between items-center mb-4'>
           <p className='text-[45px] font-dmserif text-white'>Patients</p>
-          {/* <button
-            className='px-4 py-2 bg-blue-500 text-white rounded-md'
-            onClick={() => {
-              signOut(auth)
-                .then(() => {
-                  console.log("signed out");
-                })
-                .catch((error) => {
-                  console.log(error);
-                });
-            }}
-          >
-            Logout
-          </button> */}
-          <button
-            className='px-4 py-2 bg-blue-500 text-white rounded-md'
-           onClick={handleAddPatient}
-          >
-            Add patient
-          </button>
-          <button
-            className='px-4 py-2 bg-blue-500 text-white rounded-md'
-           onClick={handleCreatePatient}
-          >
-            create a patient
-          </button>
-
+          <div>
+            <button className='px-4 py-2 mr-2 bg-blue-500 text-white rounded-md'>
+              create a patient
+            </button>
+            <button className='px-4 py-2 bg-red-400 text-white rounded-md'>
+              Logout
+            </button>
+          </div>
         </div>
-        <UserTab
-          serial='S.No'
-          name='Name'
-          sex='Sex'
-          age='Age'
-          bloodgroup='Blood'
-        />
+        <UserTab serial='S.No' name='Name' sex='Sex' age='age' />
 
-        {firebase.patientData.map((patient, index) => {
+        {patients.map((patient, index) => {
           return (
-            <Link to={`/${patient.patientId}`}>
+            <Link to={`/${patient.id}`}>
               <UserTab
-                serial={addOne(index)}
-                key={patient.mobile}
-                name={patient.name}
-                sex={patient.sex}
-                age={patient.age}
-                bloodgroup={patient.bloodgroup}
+                serial={index + 1}
+                key={patient.id}
+                name={patient.name[0].given[0]}
+                sex={patient.gender}
+                age={calculate_age(new Date(patient.birthDate))}
               />{" "}
             </Link>
           );
         })}
-
-<ModalTemplate
-      openModal={handleAddPatient}
-          open={addModal}
-          closeModal={handleClosePatient}
-
->
-<Search data={firebase.allPatientData} handleSave={addPatient}></Search>
-  
-</ModalTemplate>
-
-<ModalTemplate
- openModal={handleCreatePatient}
-          open={createModal}
-          closeModal={handleClosePatient}
->
-        <CreatePatientForm
-        handleSave={createPatient}
-        >
-
-        </CreatePatientForm>
-</ModalTemplate>
-
-
-
       </div>
     </>
   );
