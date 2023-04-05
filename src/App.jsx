@@ -6,6 +6,7 @@ import Patients from "./scenes/Patients";
 import Patient from "./scenes/Patient";
 import Signup from "./scenes/Signup";
 import Login from "./scenes/Login";
+import AllPatients from "./scenes/AllPatients";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -26,6 +27,8 @@ function App() {
             path='/login'
             element={isLoggedIn ? <Navigate to='/' /> : <Login />}
           ></Route>
+          <Route path='/patients' element={<AllPatients />}></Route>
+
           <Route path='/:patientid' element={<Patient></Patient>}></Route>
         </Routes>
       </BrowserRouter>
