@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useFirebase } from "../../context/Firebase";
 import { Delete, Edit } from "@styled-icons/material";
 
 import PatientField from "./PatientField";
@@ -7,15 +6,14 @@ import ModalTemplate from "../Modal/Modal";
 import EditForm from "./EditForm";
 
 const PatientDetails = ({ data }) => {
-  const firebase = useFirebase();
   const [isEditModal, setEditModal] = useState(false);
   function handleClick() {
     // Promise.all([firebase.deleteDocument("patients","002")]);
   }
 
-  function handleDelete() {
-    firebase.deletePatientfrom(doctorId, patientId);
-  }
+  // function handleDelete() {
+  //   firebase.deletePatientfrom(doctorId, patientId);
+  // }
 
   function handleEdit() {
     setEditModal(true);
@@ -26,7 +24,7 @@ const PatientDetails = ({ data }) => {
 
   async function handleEditSave(values) {
     console.log(values);
-    await firebase.updateDocument("patients", data.patientId, values);
+    // await firebase.updateDocument("patients", data.patientId, values);
    closeEditModal();
    location.reload();
   }

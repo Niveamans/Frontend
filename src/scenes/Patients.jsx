@@ -1,8 +1,6 @@
 import UserTab from "../components/UserTab";
 import { useEffect, useState } from "react";
-import { useFirebase } from "../context/Firebase";
 import { Link } from "react-router-dom";
-import { getAuth, signOut } from "firebase/auth";
 import Search from "../components/Dashboard/Search";
 import ModalTemplate from "../components/Modal/Modal";
 import CreatePatientForm from "../components/Dashboard/CreatePatient";
@@ -10,16 +8,15 @@ import CreatePatientForm from "../components/Dashboard/CreatePatient";
 
 
 const Users = () => {
-  const firebase = useFirebase();
   const [addModal,setAddModal] = useState(false); 
   const [createModal,setCreateModal] =  useState(false);
-  const fetchPatientsData = (docId) => {
-    const Data = firebase.getAllPatientsOf(docId);
-  };
+  // const fetchPatientsData = (docId) => {
+  //   const Data = firebase.getAllPatientsOf(docId);
+  // };
 
-  const addPatient = ( patientId) => {
-    const Data = firebase.addPatientTo("001", patientId);
-  };
+  // const addPatient = ( patientId) => {
+  //   const Data = firebase.addPatientTo("001", patientId);
+  // };
 
   const createPatient = async(values)=>{
     console.log(values);
@@ -45,11 +42,11 @@ const handleCreatePatient=()=>{
 
  
 
-  useEffect(() => {
-    Promise.all([fetchPatientsData("001"),firebase.getAllDocuments("patients")]);
-  }, []);
+  // useEffect(() => {
+  //   Promise.all([fetchPatientsData("001"),firebase.getAllDocuments("patients")]);
+  // }, []);
 
-  const auth = getAuth();
+  // const auth = getAuth();
 
   return (
     <>
@@ -92,7 +89,7 @@ const handleCreatePatient=()=>{
           bloodgroup='Blood'
         />
 
-        {firebase.patientData.map((patient, index) => {
+        {/* {firebase.patientData.map((patient, index) => { */}
           return (
             <Link to={`/${patient.patientId}`}>
               <UserTab
@@ -105,7 +102,7 @@ const handleCreatePatient=()=>{
               />{" "}
             </Link>
           );
-        })}
+        {/* })} */}
 
 <ModalTemplate
       openModal={handleAddPatient}
@@ -113,7 +110,7 @@ const handleCreatePatient=()=>{
           closeModal={handleClosePatient}
 
 >
-<Search data={firebase.allPatientData} handleSave={addPatient}></Search>
+{/* <Search data={firebase.allPatientData} handleSave={addPatient}></Search> */}
   
 </ModalTemplate>
 

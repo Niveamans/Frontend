@@ -1,17 +1,12 @@
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { useFirebase } from "../context/Firebase";
 import { useState } from "react";
 
 const Login = () => {
-  const auth = getAuth();
-  const firebase = useFirebase();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const getDoctor = (doctorEmail) => {
-    const data = firebase.getDoctor(doctorEmail);
-  };
+  // const getDoctor = (doctorEmail) => {
+  // };
 
   return (
     <div className='h-[100vh] w-[100vw] flex bg-blue-100 items-center justify-center'>
@@ -38,7 +33,6 @@ const Login = () => {
                     // Signed in
                     const user = userCredential.user;
                     console.log(userCredential);
-                    firebase.setIsLoggedIn(true);
                   })
                   .catch((error) => {
                     const errorCode = error.code;

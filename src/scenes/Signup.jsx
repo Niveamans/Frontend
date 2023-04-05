@@ -1,16 +1,13 @@
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { useFirebase } from "../context/Firebase";
 import { v4 as uuidv4 } from "uuid";
-import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 
 const Signup = () => {
-  const auth = getAuth();
-  const firebase = useFirebase();
 
-  const createUser = (data, docId) => {
-    const Data = firebase.setDoctor(data, docId);
-  };
+
+  // const createUser = (data, docId) => {
+  //   const Data = firebase.setDoctor(data, docId);
+  // };
 
   const signUpUser = (username, password) => {};
   return (
@@ -47,7 +44,7 @@ const Signup = () => {
                     // Signed in
                     const user = userCredential.user;
                     console.log(userCredential);
-                    firebase.setIsLoggedIn(true);
+                    // firebase.setIsLoggedIn(true);
 
                     // ...
                   })
