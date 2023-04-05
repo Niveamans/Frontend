@@ -36,8 +36,8 @@ const Users = () => {
     }
   }
 
-  useEffect(async () => {
-    // await getUsersOf("9e4e4cf9-47a9-4bda-a65c-57adf6fc87e9");
+  useEffect(() => {
+    getUsersOf("9e4e4cf9-47a9-4bda-a65c-57adf6fc87e9");
   }, []);
 
   return (
