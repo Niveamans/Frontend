@@ -12,7 +12,7 @@ const Login = () => {
   const getDoctor = (doctorEmail) => {
     const data = firebase.getDoctor(doctorEmail);
   };
-
+  
   return (
     <div className='h-[100vh] w-[100vw] flex bg-blue-100 items-center justify-center'>
       <div className='p-8 bg-blue-300 flex-column rounded-lg'>

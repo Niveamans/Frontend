@@ -51,6 +51,7 @@ const handleCreatePatient=()=>{
 
   const auth = getAuth();
 
+
   return (
     <>
       <div className='w-5/6 mx-auto p-4 bg-blue-300 rounded-b-lg font-poppins'>

@@ -1,29 +1,105 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import PatientDetails from "../components/PatientsPage/PatientDetails";
 import Checkup from "../components/PatientsPage/Checkup";
 import { useParams } from "react-router-dom";
-import { useFirebase } from "../context/Firebase";
+import axios from "axios";
+import ModalTemplate from "../components/Modal/Modal";
+import CheckUpForm from "../components/PatientsPage/CheckupForm";
 
 const Patients = () => {
+  const [userData,setUserData] = useState({name: [
+    {
+        family: "Yagami",
+        given: [
+            "Light"
+        ],
+        use: "official"
+    },
+], resourceType: "Patient",
+id: 'data.id',
+
+
+});
+  const[encounters,setEncounters] = useState([]);
+  const [isCheckupModal,setCheckup]= useState(false);
+  
   const params = useParams();
-  const firebase = useFirebase();
+  
 
-  //  function fetchDoc(){
-  //     const Doc = firebase.getDocument("patients",params.patient)
-  //   }
-
+   async function fetchPatient(){
+      try {
+        const response = await axios.get(`http://localhost:3000/patients/${params.patientid}`,{
+          headers: {
+            function : "getPatient"
+          }
+        });
+        // console.log(response);
+        // console.log(response.data)
+        setUserData(response.data)
+        
+      } catch (error) {
+        console.error(error);
+      }
+    
+  
+    }
+    async function fetchEncounter(){
+      try {
+        const response = await axios.get(`http://localhost:3000/patients/${params.patientid}`,{
+          headers: {
+            function : "getAllEncounters"
+          }
+        });
+        // console.log(response);
+        console.log(response.data.entry)
+       setEncounters(response.data.entry)
+      } catch (error) {
+        console.error(error);
+      }
+    
+  
+    }
+  
   useEffect(() => {
     Promise.all([
-      firebase.getDocument("patients", params.patientid),
-      firebase.getSubCollections("patients", params.patientid, "checkups"),
+      fetchPatient(),
+      fetchEncounter(),
     ]);
   }, []);
 
-  function handleAddCheckup() {}
+   function handleAddCheckup() {
+    setCheckup(true);
+
+  }
+  function closeAddModal(){
+    setCheckup(false)
+
+  }
+
+ async function sendCheckup(data){
+ 
+  
+  const newData =   {...data, subject: {
+  reference: `Patient/${params.patientid}`
+  }
+  
+
+}
+console.log(newData)
+const response = await axios.post("http://localhost:3000/encounters",newData)
+console.log(response)
+console.log(data)
+window.location.reload()
+
+
+  }
+
+
+
 
   return (
     <div className='flex md:flex-row flex-col items-center md:items-start gap-2 text-[17px]'>
-      <PatientDetails data={firebase.patientDetail}></PatientDetails>
+      <PatientDetails data={userData}></PatientDetails>
       <div className='flex flex-col w-full max-h-screen gap-2 p-5 py-8 bg-blue-300 rounded-lg'>
         <div className='flex justify-between mb-5'>
           <h1 className='font-dmserif md:text-[45px] text-xl text-white'>
@@ -42,10 +118,29 @@ const Patients = () => {
         </div>
 
         <div className='max-h-full overflow-y-scroll rounded-md'>
-          {firebase.checkups.map((item, index) => (
-            <Checkup data={item} index={index + 1} key={index + 1}></Checkup>
+          {encounters.map((item, index) => (
+            <Checkup data={item.resource} index={index + 1} key={index + 1}></Checkup>
           ))}
         </div>
+        <ModalTemplate
+        openModal={handleAddCheckup}
+          open={isCheckupModal}
+          closeModal={closeAddModal}
+        
+        >
+          <CheckUpForm
+          
+            handleSave={sendCheckup}
+           
+          ></CheckUpForm>
+
+          
+        </ModalTemplate>
+
+
+
+
+
       </div>
     </div>
   );
