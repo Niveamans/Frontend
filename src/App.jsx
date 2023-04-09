@@ -7,6 +7,8 @@ import Patient from "./scenes/Patient";
 import Signup from "./scenes/Signup";
 import Login from "./scenes/Login";
 import { useFirebase } from "./context/Firebase";
+// import ObservationDetails from "./components/Encounters/ObservationDetails";
+import Encounter from "./scenes/Encounter";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -29,7 +31,7 @@ function App() {
             element={isLoggedIn ? <Navigate to='/' /> : <Login />}
           ></Route>
           <Route path='/:patientid' element={<Patient></Patient>}></Route>
-
+          <Route path="/encounters/:encounterid" element={<Encounter></Encounter>}></Route>
           
         </Routes>
       </BrowserRouter>
