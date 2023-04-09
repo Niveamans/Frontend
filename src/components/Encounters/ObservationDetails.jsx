@@ -23,14 +23,15 @@ const ObservationDetails = (props) => {
   }
 
   async function updateObservation(data) {
+    console.log(data);
     const newData = {
       resourceType: "Observation",
       id: data.id,
       status: data.status,
       effectiveDateTime: data.effectiveDateTime,
-      subject : {
-        reference : data.subject.reference,
-      },
+      // subject : {
+      //   reference : data.subject.reference,
+      // },
       // context : {
       //   reference : data.context.reference,
       // },
@@ -58,8 +59,8 @@ const ObservationDetails = (props) => {
         unit: data.unit,
       },
     };
-    // console.log(newData);
-    console.log(data);
+    console.log(newData);
+    // console.log(data);
     // consolelog(newData.subject.reference);
     try {
       const response = await axios.put(

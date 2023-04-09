@@ -21,8 +21,8 @@ const EditForm = ({ data, handleSave }) => {
         initialValues={{
           status: data.status,
           location: currentDetails.location,
-          start: currentDetails.start,
-          end: currentDetails.end,
+          start: data.period.start,
+          end: data.period.end,
         }}
         onSubmit={(values, onSubmitProps) => {
           setTimeout(() => {

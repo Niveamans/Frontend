@@ -2,6 +2,13 @@ import { Formik } from "formik";
 import Select from "react-select";
 import React from "react";
 
+const val = [
+  { label: "registered", value: "registered" },
+  { label: "preliminary", value: "preliminary" },
+  { label: "final", value: "final" },
+  { label: "amended +", value: "amended +" },
+];
+
 const AddObservation = ({ data, handleSave }) => {
   return (
     <div>
@@ -41,17 +48,19 @@ const AddObservation = ({ data, handleSave }) => {
           >
             <div className="flex justify-between items-center gap-4 bg-blue-500 rounded-md p-2">
               <label for="status">Status : </label>
-              <input
-                id="status"
-                type="text"
+              <select
                 name="status"
+                id="status"
+                className="focus:outline-none bottom-1 rounded-md p-2 w-[66%]"
+                defaultValue={values.status}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.email}
-                className=" focus:outline-none bottom-1 rounded-md p-2"
-                placeholder="status"
-                defaultValue={values.name}
-              />
+                value={values.status}
+              >
+                {val.map((i) => (
+                  <option value={i.value}>{i.label}</option>
+                ))}
+              </select>
             </div>
             <div className="flex justify-between items-center gap-4 bg-blue-500 rounded-md p-2">
               <label for="effectiveDateTime">Date-Time : </label>
@@ -136,6 +145,15 @@ const AddObservation = ({ data, handleSave }) => {
                 placeholder="unit"
                 defaultValue={values.name}
               />
+            </div>
+            <div className="flex justify-center">
+              <button
+                className="font-poppins rounded-md p-4 mt-2 w-[30%] text-blue-50 bg-blue-500 "
+                type="submit"
+                disabled={isSubmitting}
+              >
+                Submit
+              </button>
             </div>
           </form>
         )}

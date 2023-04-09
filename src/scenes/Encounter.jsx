@@ -123,11 +123,11 @@ const Encounter = () => {
           </div>
           <div className="px-6 py-2 flex flex-row justify-between">
             <div>Period Start : </div>
-            <div>{encounterData.period.start}</div>
+            {/* <div>{encounterData.period.start}</div> */}
           </div>
           <div className="px-6 py-2 flex flex-row justify-between">
             <div>Period End : </div>
-            <div>{encounterData.period.end}</div>
+            {/* <div>{encounterData.period.end}</div> */}
           </div>
         </div>
       </div>
@@ -136,7 +136,7 @@ const Encounter = () => {
           <p className="text-[45px] font-dmserif text-white px-8">
             Observations
           </p>
-          <button onClick={handleAdd} className="px-4 py-2 bg-blue-500 text-white rounded-md hover:transition-all hover:duration-300 ">
+          <button onClick={handleAdd} className="px-4 py-2 bg-blue-500 text-white rounded-md hover:transition-all hover:duration-100 hover:w-[30%] hover : h-[20%] ">
             Add Observation
           </button>
         </div>

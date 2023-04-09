@@ -37,25 +37,12 @@ const EditObservationForm = ({ data, handleSave }) => {
                 subject : {
                   reference : data.subject.reference,
                 },
-                // context : {
-                //   reference : data.context.reference,
-                // },
-                identifier: [
-                  {
-                      system : data?.identifier[0].system,
-                      value : data?.identifier[0].value,
-                  }
-                ],
-                // meta : {
-                //     lastUpdated : data.meta.lastUpdated,
-                //     versionId : data.meta.versionId,
-                // },
                 code: {
                   coding: [
                     {
-                      system: values.code?.coding[0].system,
-                      code: values.code?.coding[0].code,
-                      display: values.code?.coding[0].display,
+                      system: values.system,
+                      code: values.code,
+                      display: values.display,
                     },
                   ],
                 },
@@ -64,9 +51,9 @@ const EditObservationForm = ({ data, handleSave }) => {
                   unit: values.unit,
                 },
               };
-            console.log(values);
-            handleSave(values);
             // console.log(values);
+            handleSave(values);
+            console.log(values);
             // setSubmitting(false);
             onSubmitProps.resetForm();
           }, 400);
