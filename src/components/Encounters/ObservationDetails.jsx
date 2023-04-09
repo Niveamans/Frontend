@@ -6,16 +6,16 @@ import EditObservationForm from "./EditObservationForm";
 
 const ObservationDetails = (props) => {
   const [isEditObservation, setEditObservation] = useState(false);
-  const [isDeleteObservation, setDeleteObservation] = useState([]);
+
 
   async function deleteObservation() {
-    // console.log(props.element.resource.id);
+
     try {
       const response = await axios.delete(
         `http://localhost:3000/observations/${props.element.resource.id}`,
         
       );
-      // setDeleteObservation(response.data);
+
       window.location.reload();
     } catch (e) {
       console.log(e);
