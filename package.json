@@ -21,6 +21,8 @@
     "react-icons": "^4.8.0",
     "react-modal": "^3.16.1",
     "react-router-dom": "^6.8.2",
+    "react-select": "^5.7.2",
+    "uuidv4": "^6.2.13",
     "yup": "^1.0.2"
   },
   "devDependencies": {

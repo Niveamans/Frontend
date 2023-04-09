@@ -4,6 +4,7 @@ import { useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Patients from "./scenes/Patients";
 import Patient from "./scenes/Patient";
+import Encounter from "./scenes/Encounter";
 import Signup from "./scenes/Signup";
 import Login from "./scenes/Login";
 import AllPatients from "./scenes/AllPatients";
@@ -30,6 +31,7 @@ function App() {
           <Route path='/patients' element={<AllPatients />}></Route>
 
           <Route path='/:patientid' element={<Patient></Patient>}></Route>
+          <Route path='/encounters/:encounterid' element={<Encounter></Encounter>}></Route>
         </Routes>
       </BrowserRouter>
     </div>
