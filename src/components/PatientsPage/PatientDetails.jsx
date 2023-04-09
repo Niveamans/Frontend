@@ -25,8 +25,8 @@ const PatientDetails = ({ data }) => {
   async function handleEditSave(values) {
     console.log(values);
     // await firebase.updateDocument("patients", data.patientId, values);
-   closeEditModal();
-   location.reload();
+    closeEditModal();
+    location.reload();
   }
 
   return (
@@ -47,9 +47,6 @@ const PatientDetails = ({ data }) => {
           {/* <PatientField field='Bloodgroup' data={data.bloodgroup} /> */}
           {/* <PatientField field='Mobile' data={data.mobile} /> */}
           <PatientField field='DOB' data={data.dob} />
-       
-       
-       
         </div>
 
         <div className='flex justify-between my-2 px-5 py-2 rounded-md bg-blue-500'>
@@ -65,13 +62,10 @@ const PatientDetails = ({ data }) => {
           ></Edit>
         </div>
 
- 
-
         <ModalTemplate
-        openModal={handleEdit}
+          openModal={handleEdit}
           open={isEditModal}
           closeModal={closeEditModal}
-        
         >
           <EditForm
             data={data}
@@ -79,17 +73,6 @@ const PatientDetails = ({ data }) => {
             closeModal={closeEditModal}
           ></EditForm>
         </ModalTemplate>
-
-
-
-
-
-
-
-
-
-
-
       </div>
     </div>
   );
