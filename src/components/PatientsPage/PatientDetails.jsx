@@ -111,13 +111,10 @@ const PatientDetails = ({ data }) => {
           ></Edit>
         </div>
 
- 
-
         <ModalTemplate
-        openModal={handleEdit}
+          openModal={handleEdit}
           open={isEditModal}
           closeModal={closeEditModal}
-        
         >
           <EditForm
             data={data}
@@ -127,17 +124,6 @@ const PatientDetails = ({ data }) => {
 
           
         </ModalTemplate>
-
-
-
-
-
-
-
-
-
-
-
       </div>
     </div>
   );

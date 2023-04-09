@@ -45,14 +45,12 @@ id: 'data.id',
     }
     async function fetchEncounter(){
       try {
-        const response = await axios.get(`http://localhost:3000/patients/${params.patientid}`,{
-          headers: {
-            function : "getAllEncounters"
-          }
+        const response = await axios.get(`http://localhost:3000/encounters?patient=${params.patientid}`,{
+         
         });
         // console.log(response);
-        console.log(response.data.entry)
-       setEncounters(response.data.entry)
+        console.log(response.data)
+       setEncounters(response.data?response.data:null)
       } catch (error) {
         console.error(error);
       }
