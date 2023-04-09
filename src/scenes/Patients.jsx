@@ -34,9 +34,9 @@ const Users = () => {
     setAddModal(false)
     setCreateModal(false)
   } 
-const handleCreatePatient=()=>{
+  const handleCreatePatient=()=>{
     setCreateModal(true)
-}
+  }
 
 
 
