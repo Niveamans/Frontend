@@ -6,16 +6,16 @@ import EditObservationForm from "./EditObservationForm";
 
 const ObservationDetails = (props) => {
   const [isEditObservation, setEditObservation] = useState(false);
-  const [isDeleteObservation, setDeleteObservation] = useState([]);
+
 
   async function deleteObservation() {
-    // console.log(props.element.resource.id);
+
     try {
       const response = await axios.delete(
         `http://localhost:3000/observations/${props.element.resource.id}`,
         
       );
-      // setDeleteObservation(response.data);
+
       window.location.reload();
     } catch (e) {
       console.log(e);
@@ -24,50 +24,14 @@ const ObservationDetails = (props) => {
 
   async function updateObservation(data) {
     console.log(data);
-    const newData = {
-      resourceType: "Observation",
-      id: data.id,
-      status: data.status,
-      effectiveDateTime: data.effectiveDateTime,
-      // subject : {
-      //   reference : data.subject.reference,
-      // },
-      // context : {
-      //   reference : data.context.reference,
-      // },
-      identifier: [
-        {
-            system : data.identifier[0].system,
-            value : data.identifier[0].value,
-        }
-      ],
-      // meta : {
-      //     lastUpdated : data.meta.lastUpdated,
-      //     versionId : data.meta.versionId,
-      // },
-      code: {
-        coding: [
-          {
-            system: data.code.coding[0].system,
-            code: data.code.coding[0].code,
-            display: data.code.coding[0].display,
-          },
-        ],
-      },
-      valueQuantity: {
-        value: data.value,
-        unit: data.unit,
-      },
-    };
-    console.log(newData);
-    // console.log(data);
-    // consolelog(newData.subject.reference);
+    
     try {
       const response = await axios.put(
-        `http://localhost:3000/observations/${props.element.resource.id}`,
-        newData
+        `http://localhost:3000/observations/${data.id}`,
+        data
       );
-      // window.location.reload();
+      console.log(response);
+      window.location.reload();
     } catch (e) {
       console.log(e);
     }

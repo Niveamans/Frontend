@@ -1,5 +1,4 @@
 import { Formik } from "formik";
-import Select from "react-select";
 import React from "react";
 
 const val = [
@@ -9,7 +8,7 @@ const val = [
     {label :"amended +" ,value:"amended +"},
 ]
 const EditObservationForm = ({ data, handleSave }) => {
-//   console.log(data)
+  console.log(data)
     return (
     <div>
       <Formik
@@ -27,16 +26,12 @@ const EditObservationForm = ({ data, handleSave }) => {
         onSubmit={(values, onSubmitProps) => {
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
-            // new newdata = data
-            // newdata.code.coding = [{code : values.code,display:values.display,system:values.system}]
+          
             const newData = {
                 resourceType: "Observation",
                 id: data.id,
                 status: values.status,
                 effectiveDateTime: values.effectiveDateTime,
-                subject : {
-                  reference : data.subject.reference,
-                },
                 code: {
                   coding: [
                     {
@@ -46,18 +41,20 @@ const EditObservationForm = ({ data, handleSave }) => {
                     },
                   ],
                 },
+                context: data?.context,
                 valueQuantity: {
                   value: values.value,
                   unit: values.unit,
                 },
               };
             // console.log(values);
-            handleSave(values);
+            handleSave(newData);
             console.log(values);
             // setSubmitting(false);
             onSubmitProps.resetForm();
           }, 400);
         }}
+       
       >
         {({
           values,
@@ -80,7 +77,9 @@ const EditObservationForm = ({ data, handleSave }) => {
                 name="status"
                 id="status"
                 className=" focus:outline-none bottom-1 rounded-md p-2 w-[65%]"
-
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.status}
               >
                 {val.map((i)=>(
                     <option value={i.value}>{i.label}</option>
@@ -154,6 +153,7 @@ const EditObservationForm = ({ data, handleSave }) => {
                 // value={values.valueQuantity.value}
                 className=" focus:outline-none bottom-1 rounded-md p-2"
                 placeholder="value"
+                value={values.value}
                 defaultValue={values.value}
               />
             </div>
@@ -169,6 +169,7 @@ const EditObservationForm = ({ data, handleSave }) => {
                 className=" focus:outline-none bottom-1 rounded-md p-2"
                 placeholder="unit"
                 defaultValue={values.unit}
+                value={values.unit}
               />
             </div>
             <div className="flex justify-center">
