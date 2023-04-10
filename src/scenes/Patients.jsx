@@ -1,8 +1,6 @@
 import UserTab from "../components/UserTab";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Search from "../components/Dashboard/Search";
-import ModalTemplate from "../components/Modal/Modal";
 import axios from "axios";
 
 const Users = () => {

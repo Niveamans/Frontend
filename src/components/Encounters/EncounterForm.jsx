@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Formik } from "formik";
-import Select from "react-select";
+
 
 const statuses = [
   { label: "arrived", value: "arrived" },

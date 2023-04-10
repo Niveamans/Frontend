@@ -1,5 +1,5 @@
 import { Formik } from "formik";
-import Select from "react-select";
+
 import React from "react";
 
 const AddObservation = ({ handleSave }) => {
