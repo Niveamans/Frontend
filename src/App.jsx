@@ -23,8 +23,8 @@ function App() {
 
           <Route path='/patients' element={<AllPatients />}></Route>
 
-          <Route path='/:patientid' element={<Patient></Patient>}></Route>
-          <Route path="/encounters/:encounterid" element={<Encounter></Encounter>}></Route>
+          <Route path='/patient/:patientid' element={<Patient></Patient>}></Route>
+          <Route path="/patient/:patientid/encounter/:encounterid" element={<Encounter></Encounter>}></Route>
           
         </Routes>
       </BrowserRouter>

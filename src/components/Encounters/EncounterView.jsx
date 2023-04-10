@@ -25,9 +25,9 @@ const Encounter = (props) => {
   }, [params.encounterId]);
 
   if (encounter) {
-    const start = new Date(encounter.period.start);
+    const start = new Date(encounter?.period?.start);
     const startDate = start.toLocaleString();
-    const end = new Date(encounter.period.end);
+    const end = new Date(encounter?.period?.end);
     const endDate = end.toLocaleString();
     props.handleEncounter(encounter);
 

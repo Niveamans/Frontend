@@ -47,6 +47,8 @@ const Encounter = () => {
           value: data.value,
         },
       });
+      window.location.reload();
+
     } catch (e) {
       console.log(e);
     }

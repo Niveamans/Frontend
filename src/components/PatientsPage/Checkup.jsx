@@ -10,7 +10,7 @@ const Checkup = ({ data, index }) => {
   
   
   return (
-    <Link to={`encounters/${data.id}`}>
+    <Link to={`encounter/${data.id}`}>
       <div className='bg-blue-500 flex items-center justify-evenly mb-5 cursor-pointer rounded-sm text-blue-50'>
         <div className='px-5 py-2'>
           <p>{index}</p>

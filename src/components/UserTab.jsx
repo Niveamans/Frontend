@@ -38,7 +38,7 @@ const UserTab = (props) => {
   return (
     <>
       <div className='flex justify-between'>
-        <Link className='w-[90%]' to={`/${props.id}`}>
+        <Link className='w-[90%]' to={`/patient/${props.id}`}>
           <div className='flex bg-blue-500 text-white justify-evenly rounded-md p-5 mb-4 drop-shadow font-poppins'>
             <div>{props.serial}</div>|<div>{props.name}</div>|
             <div>{props.age}</div>|<div>{props.sex}</div>{" "}
