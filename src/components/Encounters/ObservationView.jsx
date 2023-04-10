@@ -9,8 +9,9 @@ const ObservationView = (props) => {
 
   async function allObservations() {
     try {
+      setObservations([]);
       const response = await axios.get(
-        `http://localhost:3000/encounters/${params.encounterid}`,
+        `http://localhost:3000/observations?encounter=${params.encounterid}`,
         {
           headers: {
             function: `getObservations`,
@@ -18,10 +19,8 @@ const ObservationView = (props) => {
         }
       );
       setObservations(response.data);
-      console.log(observations);
     } catch (e) {
       console.log(e);
-      setObservations([]);
     }
   }
 
