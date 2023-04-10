@@ -1,12 +1,6 @@
 import { Formik } from "formik";
 import React from "react";
 
-const val = [
-    {label :"registered" ,value:"registered"},
-    {label :"preliminary" ,value:"preliminary"},
-    {label :"final" ,value:"final"},
-    {label :"amended +" ,value:"amended +"},
-]
 const EditObservationForm = ({ data, handleSave }) => {
   console.log(data)
     return (
@@ -79,11 +73,13 @@ const EditObservationForm = ({ data, handleSave }) => {
                 className=" focus:outline-none bottom-1 rounded-md p-2 w-[65%]"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.status}
+                // value={values.status}
               >
-                {val.map((i)=>(
-                    <option value={i.value}>{i.label}</option>
-                ))}
+                <option value="" selected hidden></option>
+                <option value={"registered"}>registered</option>
+                <option value={"preliminary"}>preliminary</option>
+                <option value={"final"}>final</option>
+                <option value={"amended +"}>amended +</option>
               </select>
             </div>
             <div className="flex justify-between items-center gap-4 bg-blue-500 rounded-md p-2">

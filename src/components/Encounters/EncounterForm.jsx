@@ -1,17 +1,6 @@
 import React, { useState } from "react";
 import { Formik } from "formik";
 
-
-const statuses = [
-  { label: "arrived", value: "arrived" },
-  { label: "planned", value: "planned" },
-  { label: "cancelled", value: "cancelled" },
-  { label: "finished", value: "finished" },
-  { label: "triaged", value: "triaged" },
-  { label: "onleave", value: "onleave" },
-  { label: "in-progress", value: "in-progress" },
-];
-
 const EditForm = ({ data, handleSave }) => {
   const [currentDetails, setCurrentDetails] = useState([]);
 
@@ -21,8 +10,8 @@ const EditForm = ({ data, handleSave }) => {
         initialValues={{
           status: data.status,
           location: currentDetails.location,
-          start: data.period.start,
-          end: data.period.end,
+          start: data.period?.start,
+          end: data.period?.end,
         }}
         onSubmit={(values, onSubmitProps) => {
           setTimeout(() => {
@@ -55,14 +44,19 @@ const EditForm = ({ data, handleSave }) => {
                 id="status"
                 name="status"
                 className="w-[68%] rounded-md p-2 focus:outline-none"
-                defaultValue={values.status}
+                // defaultValue={values.status}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.status}
+                // value={values.status}
               >
-                {statuses.map((i) => (
-                  <option value={i.value}>{i.label}</option>
-                ))}
+                <option value={""} selected hidden></option>
+                <option value={"arrived"}>arrived</option>
+                <option value={"planned"}>planned</option>
+                <option value={"cancelled"}>cancelled</option>
+                <option value={"finished"}>finished</option>
+                <option value={"triaged"}>triaged</option>
+                <option value={"onleave"}>onleave</option>
+                <option value={"in-progress"}>in-progress</option>
               </select>
             </div>
             <div className="flex justify-between items-center gap-4 bg-blue-500 rounded-md p-2">

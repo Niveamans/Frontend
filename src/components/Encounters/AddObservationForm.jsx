@@ -3,13 +3,6 @@ import { Formik } from "formik";
 import React from "react";
 
 const AddObservation = ({ handleSave }) => {
-  const val = [
-    { label: "select", value: "null" },
-    { label: "registered", value: "registered" },
-    { label: "preliminary", value: "preliminary" },
-    { label: "final", value: "final" },
-    { label: "amended +", value: "amended +" },
-  ];
 
   return (
     <div>
@@ -55,9 +48,11 @@ const AddObservation = ({ handleSave }) => {
                 onChange={handleChange}
                 onBlur={handleBlur}
               >
-                {val.map((i) => (
-                  <option value={i.value}>{i.label}</option>
-                ))}
+                <option value="" selected hidden></option>
+                <option value={"registered"}>registered</option>
+                <option value={"preliminary"}>preliminary</option>
+                <option value={"final"}>final</option>
+                <option value={"amended +"}>amended +</option>
               </select>
             </div>
 

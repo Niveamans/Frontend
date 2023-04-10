@@ -48,7 +48,6 @@ const Encounter = () => {
         },
       });
       window.location.reload();
-
     } catch (e) {
       console.log(e);
     }
@@ -59,8 +58,8 @@ const Encounter = () => {
       resourceType: "Encounter",
       id: params.encounterid,
       period: {
-        start: data.period.start,
-        end: data.period.end,
+        start: data?.period?.start,
+        end: data?.period?.end,
       },
     };
 
@@ -95,7 +94,7 @@ const Encounter = () => {
   }
 
   return (
-    <div className='flex md:flex-row flex-col md:items-start w-full gap-2'>
+    <div className="flex md:flex-row flex-col md:items-start w-full gap-2">
       <EncounterView
         handleEncounter={handleEncounter}
         handleEdit={handleEdit}
