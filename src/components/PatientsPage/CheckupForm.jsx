@@ -46,7 +46,7 @@ const CheckUpForm = ({ handleSave}) => {
           >
             <div className='flex justify-between items-center gap-4 bg-blue-500 rounded-md p-2'>
               <label for='status'>Status: </label>
-              <input
+              <select
                 id='status'
                 type='text'
                 name='status'
@@ -54,9 +54,20 @@ const CheckUpForm = ({ handleSave}) => {
                 onBlur={handleBlur}
                 value={values.status}
                 className=' focus:outline-none bottom-1 rounded-md p-2'
-                placeholder='name'
+                placeholder='status'
                 defaultValue={values.status}
-              />
+              >
+              <option value="planned">planned</option>
+              <option value="arrived">arrived</option>
+              <option value="triaged">triaged</option>
+              <option value="finished">finished</option>
+              <option value="cancelled ">cancelled </option>
+              <option value="in-progress">in-progress</option>
+              <option value="onleave">onleave</option>
+              
+             
+
+              </select>
             </div>
 
             
