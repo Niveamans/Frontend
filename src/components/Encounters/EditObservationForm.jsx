@@ -123,7 +123,7 @@ const EditObservationForm = ({ data, handleSave }) => {
                 name="display"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.display}
+                // value={values.display}
                 className=" focus:outline-none bottom-1 rounded-md p-2"
                 placeholder="display"
                 defaultValue={values.display}

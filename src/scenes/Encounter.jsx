@@ -136,7 +136,7 @@ const Encounter = () => {
           <p className="text-[45px] font-dmserif text-white px-8">
             Observations
           </p>
-          <button onClick={handleAdd} className="px-4 py-2 bg-blue-500 text-white rounded-md hover:transition-all hover:duration-100 hover:w-[30%] hover : h-[20%] ">
+          <button onClick={handleAdd} className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-white hover:text-blue-500 hover:border-2 hover:border-blue-500 hover:transition-all hover:duration-300">
             Add Observation
           </button>
         </div>
