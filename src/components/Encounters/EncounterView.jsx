@@ -22,7 +22,7 @@ const Encounter = (props) => {
 
   useEffect(() => {
     fetchEncounter();
-  }, [props.encounterId]);
+  }, [params.encounterId]);
 
   if (encounter) {
     const start = new Date(encounter.period.start);
