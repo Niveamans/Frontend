@@ -8,7 +8,7 @@ const val = [
     {label :"amended +" ,value:"amended +"},
 ]
 const EditObservationForm = ({ data, handleSave }) => {
-//   console.log(data)
+  console.log(data)
     return (
     <div>
       <Formik
@@ -26,16 +26,12 @@ const EditObservationForm = ({ data, handleSave }) => {
         onSubmit={(values, onSubmitProps) => {
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
-            // new newdata = data
-            // newdata.code.coding = [{code : values.code,display:values.display,system:values.system}]
+          
             const newData = {
                 resourceType: "Observation",
                 id: data.id,
                 status: values.status,
                 effectiveDateTime: values.effectiveDateTime,
-                subject : {
-                  reference : data.subject.reference,
-                },
                 code: {
                   coding: [
                     {
@@ -45,7 +41,7 @@ const EditObservationForm = ({ data, handleSave }) => {
                     },
                   ],
                 },
-                context: data.context,
+                context: data?.context,
                 valueQuantity: {
                   value: values.value,
                   unit: values.unit,
