@@ -1,15 +1,20 @@
 import React from "react";
 import { Formik } from "formik";
 
-const AddPatientForm = () => {
+const AddPatientForm = ({handleSave}) => {
   return (
     <div>
       <Formik
-        initialValues={{}}
+        initialValues={{
+          firstName : '',
+          lastName : '',
+          birthDate : '',
+          gender : ''
+        }}
         onSubmit={(values, onSubmitprops) => {
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
-            // handleSave(values);
+            handleSave(values);
             console.log(values);
             onSubmitprops.resetForm();
           }, 400);
@@ -31,7 +36,7 @@ const AddPatientForm = () => {
             className="flex font-poppins flex-col w-[200px] max-w-max min-w-max  gap-3 mx-auto text-sm sm:text-lg mt-3 "
           >
             <div className="flex justify-between items-center gap-4 bg-blue-500 rounded-md p-2">
-              <label for="name">First Name : </label>
+              <label for="firstName">First Name : </label>
               <input
                 id="firstName"
                 type="text"
@@ -46,7 +51,7 @@ const AddPatientForm = () => {
             </div>
 
             <div className="flex justify-between items-center gap-4 bg-blue-500 rounded-md p-2">
-              <label for="name">Last Name : </label>
+              <label for="lastName">Last Name : </label>
               <input
                 id="lastName"
                 type="text"
@@ -60,14 +65,14 @@ const AddPatientForm = () => {
               />
             </div>
             <div className="flex justify-between items-center gap-4 bg-blue-500 rounded-md p-2">
-              <label for="dob">DOB : </label>
+              <label for="birthDate">DOB : </label>
               <input
-                id="dob"
-                name="dob"
+                id="birthDate"
+                name="birthDate"
                 type="date"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                placeholder="dob"
+                placeholder="birthDate"
                 // value={values.age}
                 className=" focus:outline-none bottom-1 rounded-md p-2"
               />
@@ -77,6 +82,7 @@ const AddPatientForm = () => {
 
               <select
                 name="gender"
+                id="gender"
                 // value={values.gender}
                 // defaultValue={values.gender}
                 className="rounded-md p-2 "
@@ -87,7 +93,8 @@ const AddPatientForm = () => {
                 <option value={""} selected hidden></option>
                 <option value={"male"}>male</option>
                 <option value={"female"}>female</option>
-                <option value={"others"}>others</option>
+                <option value={"other"}>others</option>
+                <option value={"unknown"}>unknown</option>
               </select>
             </div>
             <div className="flex justify-center">

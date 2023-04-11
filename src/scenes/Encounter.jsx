@@ -19,6 +19,7 @@ const Encounter = () => {
 
   async function createObservation(data) {
     try {
+      console.log(data);
       const now = new Date();
       const response = await axios.post(`http://localhost:3000/observations/`, {
         code: {
@@ -47,6 +48,7 @@ const Encounter = () => {
           value: data.value,
         },
       });
+      console.log(response.data)
       window.location.reload();
     } catch (e) {
       console.log(e);

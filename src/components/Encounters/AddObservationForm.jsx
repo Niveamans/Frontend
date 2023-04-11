@@ -1,5 +1,4 @@
 import { Formik } from "formik";
-
 import React from "react";
 
 const AddObservation = ({ handleSave }) => {
@@ -96,7 +95,7 @@ const AddObservation = ({ handleSave }) => {
               <label for='value'>Value : </label>
               <input
                 id='value'
-                type='text'
+                type='number'
                 name='value'
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -116,8 +115,8 @@ const AddObservation = ({ handleSave }) => {
                 placeholder='unit'
               />
             </div>
-            <div>
-              <button type='submit'>Submit</button>
+            <div className="flex justify-center">
+              <button type='submit' className="font-poppins rounded-md p-4 mt-2 w-full text-blue-50 bg-blue-500">Submit</button>
             </div>
           </form>
         )}
