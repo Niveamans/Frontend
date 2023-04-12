@@ -10,7 +10,7 @@ This is **proof of concept** of a frontend client that provides a comprehensive 
 This frontend client adheres to the FHIR standard, providing a standard way to store medical resource data. It also doubles as an electronic health record, providing a secure and convenient way for practitioners to manage patient records. With an intuitive user interface and a range of features, this frontend client is an essential tool for healthcare practitioners looking to improve their patient management processes.
 
 
-## Why Helth.
+## Why Helth. and what is the objective
 Healthcare providers need to access patient data quickly and easily: Storing patient data in the cloud allows healthcare providers to access patient records from anywhere with an internet connection. This means they can quickly access critical information and provide better care to patients.
 
 FHIR is the industry standard for healthcare data interoperability: The FHIR standard is designed to make it easy for different healthcare systems to share data with each other. This means that healthcare providers can use different systems to store and retrieve patient data, as long as they all support the FHIR standard.
@@ -20,6 +20,7 @@ Cloud storage is scalable and cost-effective: Storing patient data in the cloud 
 Improved data security and compliance: Cloud storage providers are responsible for maintaining the security and compliance of patient data stored on their platforms. This means that healthcare providers can rely on cloud storage providers to implement security best practices and comply with industry regulations such as HIPAA.
 
 Improved collaboration and data sharing: Storing patient data in the cloud allows healthcare providers to collaborate and share data with other providers and organizations more easily. This means that patient data can be shared more quickly and securely, leading to better patient outcomes.
+
 
 ## Methodology
 
