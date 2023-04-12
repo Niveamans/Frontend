@@ -30,7 +30,7 @@ const PatientDetails = ({ data }) => {
     let newData = data;
     console.log(newData);
     const response = await axios.put(
-      `http://34.131.154.157/patients/${data.id}`,
+      `http://34.131.157.197/patients/${data.id}`,
       newData
     );
     console.log(response);
@@ -60,7 +60,7 @@ const PatientDetails = ({ data }) => {
     console.log(newData);
 
     const response = await axios.put(
-      `http://34.131.154.157/patients/${data.id}`,
+      `http://34.131.157.197/patients/${data.id}`,
       newData
     );
     console.log(response);

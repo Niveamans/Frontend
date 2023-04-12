@@ -10,7 +10,7 @@ const ObservationDetails = (props) => {
   async function deleteObservation() {
     try {
       const response = await axios.delete(
-        `http://34.131.154.157/observations/${props.element.resource.id}`
+        `http://34.131.157.197/observations/${props.element.resource.id}`
       );
 
       window.location.reload();
@@ -22,10 +22,9 @@ const ObservationDetails = (props) => {
   async function updateObservation(data) {
     console.log(data);
 
-
     try {
       const response = await axios.put(
-        `http://34.131.154.157/observations/${data.id}`,
+        `http://34.131.157.197/observations/${data.id}`,
         data
       );
       console.log(response);
@@ -46,9 +45,9 @@ const ObservationDetails = (props) => {
 
   // console.log(props.element);
   return (
-    <div className='bg-blue-500 rounded-md p-8 flex flex-col justify-evenly font-poppins'>
-      <div className='flex flex-row'>
-        <div className='flex flex-col w-full'>
+    <div className="bg-blue-500 rounded-md p-8 flex flex-col justify-evenly font-poppins">
+      <div className="flex flex-row">
+        <div className="flex flex-col w-full">
           <div>Status : {props.element.resource.status || <>Null</>}</div>
           <div>Date-Time : {effectiveDateTimeStr || <>Null</>}</div>
           <div>Location : Chennai hospitals</div>
@@ -66,12 +65,12 @@ const ObservationDetails = (props) => {
             {props.element.resource.valueQuantity.unit}
           </div>
         </div>
-        <div className='flex items-start gap-4'>
+        <div className="flex items-start gap-4">
           <button onClick={handleEdit}>
-            <Edit className='fill-white w-8 hover:w-12 hover:transition-all hover:duration-300'></Edit>
+            <Edit className="fill-white w-8 hover:w-12 hover:transition-all hover:duration-300"></Edit>
           </button>
           <button onClick={deleteObservation}>
-            <Delete className='fill-white w-8 hover:w-12 hover:transition-all hover:duration-300'></Delete>
+            <Delete className="fill-white w-8 hover:w-12 hover:transition-all hover:duration-300"></Delete>
           </button>
         </div>
       </div>

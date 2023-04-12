@@ -7,7 +7,7 @@ import AddPatientForm from "../components/PatientsPage/AddPatientForm";
 
 const Users = () => {
   const [patients, setPatients] = useState([]);
-  const currentPractitioner = "956533b9-846b-41c6-8e92-5816a74256d4";
+  const currentPractitioner = "ae4cae6a-1d69-47a2-9d30-067eda386c32";
   const [addPatient, setAddPatient] = useState(false);
 
   function calculate_age(dob) {
@@ -19,7 +19,8 @@ const Users = () => {
 
   async function createPatient(data) {
     try {
-      const response = await axios.post(`http://34.131.154.157/patients/`, {
+      console.log(data);
+      const response = await axios.post(`http://34.131.157.197/patients/`, {
         gender: data.gender,
         name: [
           {
@@ -40,7 +41,7 @@ const Users = () => {
         resourceType: "Patient",
       });
       console.log(response.data);
-      window.location.reload();
+      // window.location.reload();
     } catch (e) {
       console.log(e);
     }
@@ -49,7 +50,7 @@ const Users = () => {
   async function getUsersOf(practitionerId) {
     try {
       const response = await axios.get(
-        `http://34.131.154.157/practitioners/${practitionerId}`,
+        `http://34.131.157.197/practitioners/${practitionerId}`,
         {
           headers: {
             function: "getPatients",
@@ -68,7 +69,7 @@ const Users = () => {
   }
 
   useEffect(() => {
-    getUsersOf("956533b9-846b-41c6-8e92-5816a74256d4");
+    getUsersOf(currentPractitioner);
   }, []);
 
   function handleAddPatient() {

@@ -8,7 +8,7 @@ import AddPatientForm from "../components/PatientsPage/AddPatientForm";
 
 const AllPatients = () => {
   const [allPatients, setAllPatients] = useState([]);
-  const currentPractitioner = "956533b9-846b-41c6-8e92-5816a74256d4";
+  const currentPractitioner = "ae4cae6a-1d69-47a2-9d30-067eda386c32";
   const [addPatient, setAddPatient] = useState(false);
 
   function getValuesFromMap(map) {
@@ -24,7 +24,7 @@ const AllPatients = () => {
 
   async function getAllPatients() {
     try {
-      const response = await axios.get(`http://34.131.154.157/patients`, {
+      const response = await axios.get(`http://34.131.157.197/patients`, {
         headers: {
           function: "getAllPatients",
         },
@@ -37,7 +37,7 @@ const AllPatients = () => {
 
   async function createPatient(data) {
     try {
-      const response = await axios.post(`http://34.131.154.157/patients/`, {
+      const response = await axios.post(`http://34.131.157.197/patients/`, {
         gender: data.gender,
         name: [
           {

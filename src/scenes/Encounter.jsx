@@ -21,7 +21,7 @@ const Encounter = () => {
     try {
       console.log(data);
       const now = new Date();
-      const response = await axios.post(`http://34.131.154.157/observations/`, {
+      const response = await axios.post(`http://34.131.157.197/observations/`, {
         code: {
           coding: [
             {
@@ -48,7 +48,7 @@ const Encounter = () => {
           value: data.value,
         },
       });
-      console.log(response.data)
+      console.log(response.data);
       window.location.reload();
     } catch (e) {
       console.log(e);
@@ -67,7 +67,7 @@ const Encounter = () => {
 
     console.log(newData);
     const response = await axios.put(
-      `http://34.131.154.157/encounters/${params.encounterid}`,
+      `http://34.131.157.197/encounters/${params.encounterid}`,
       newData
     );
     console.log(response);

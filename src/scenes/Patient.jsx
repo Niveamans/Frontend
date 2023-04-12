@@ -26,7 +26,7 @@ const Patients = () => {
   async function fetchPatient() {
     try {
       const response = await axios.get(
-        `http://34.131.154.157/patients/${params.patientid}`,
+        `http://34.131.157.197/patients/${params.patientid}`,
         {
           headers: {
             function: "getPatient",
@@ -43,7 +43,7 @@ const Patients = () => {
   async function fetchEncounter() {
     try {
       const response = await axios.get(
-        `http://34.131.154.157/encounters?patient=${params.patientid}`,
+        `http://34.131.157.197/encounters?patient=${params.patientid}`,
         {}
       );
       // console.log(response);
@@ -74,7 +74,7 @@ const Patients = () => {
     };
     console.log(newData);
     const response = await axios.post(
-      "http://34.131.154.157/encounters",
+      "http://34.131.157.197/encounters",
       newData
     );
     console.log(response);

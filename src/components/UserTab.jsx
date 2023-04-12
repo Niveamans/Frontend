@@ -20,9 +20,8 @@ async function addPatientTo(patient, practitionerId) {
       ];
     }
 
-    const response = await axios.put(
-      `http://34.131.154.157/patients/${patient.id}`,
-      {
+    const response = await axios
+      .put(`http://34.131.157.197/patients/${patient.id}`, {
         birthDate: patient.birthDate,
         gender: patient.gender,
         generalPractitioner: generalPractitioner,
