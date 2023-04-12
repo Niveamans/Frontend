@@ -5,7 +5,7 @@ A Patient management solution that solves the issue of data interoperability and
 
 
 ## Abstract
-This frontend client provides a comprehensive solution for managing patient records and encounters for healthcare practitioners. With the ability to view and manage patient records, add new patients, and update existing ones, practitioners can easily keep track of their patients' medical histories. Additionally, practitioners can add observations to specific encounters and view a list of all encounters for a patient.
+This is **proof of concept** of a frontend client that provides a comprehensive solution for managing patient records and encounters for healthcare practitioners. With the ability to view and manage patient records, add new patients, and update existing ones, practitioners can easily keep track of their patients' medical histories. Additionally, practitioners can add observations to specific encounters and view a list of all encounters for a patient.
 
 This frontend client adheres to the FHIR standard, providing a standard way to store medical resource data. It also doubles as an electronic health record, providing a secure and convenient way for practitioners to manage patient records. With an intuitive user interface and a range of features, this frontend client is an essential tool for healthcare practitioners looking to improve their patient management processes.
 
@@ -20,6 +20,16 @@ Cloud storage is scalable and cost-effective: Storing patient data in the cloud 
 Improved data security and compliance: Cloud storage providers are responsible for maintaining the security and compliance of patient data stored on their platforms. This means that healthcare providers can rely on cloud storage providers to implement security best practices and comply with industry regulations such as HIPAA.
 
 Improved collaboration and data sharing: Storing patient data in the cloud allows healthcare providers to collaborate and share data with other providers and organizations more easily. This means that patient data can be shared more quickly and securely, leading to better patient outcomes.
+
+## Methodology
+
+- The client is a **proof of concept** for a frontend application that interacts with the server to provide a user-friendly interface for managing healthcare data. The client is built using modern web technologies such as React and Redux to provide a responsive and intuitive user interface. The client makes use of the FHIR REST API to interact with the server, sending HTTP requests to retrieve and manipulate patient data.
+
+- The client provides a set of features to enable healthcare practitioners to manage patient data efficiently. These features include viewing a list of all patients, creating new patients, adding existing patients to the current list of patients, updating existing patients, and deleting patients. The client also provides the ability to list all current patients of the practitioner and view encounters associated with a particular patient.
+
+- The client allows healthcare practitioners to add, update, and delete encounter events, as well as add, update, and delete observations done in a particular encounter event. This enables practitioners to keep track of patient history and ensure that all relevant data is captured and easily accessible.
+
+- Finally, the client adheres to current FHIR standards, providing a standardized way to store and manage medical resource data. This ensures that healthcare practitioners can efficiently manage patient data while adhering to the latest healthcare industry standards
 
 
 ## Features
