@@ -50,6 +50,7 @@ const ObservationDetails = (props) => {
         <div className='flex flex-col w-full'>
           <div>Status : {props.element.resource.status || <>Null</>}</div>
           <div>Date-Time : {effectiveDateTimeStr || <>Null</>}</div>
+          <div>Location : Chennai hospitals</div>
           {props.element.resource.code.coding.map((position, index) => {
             return (
               <div>

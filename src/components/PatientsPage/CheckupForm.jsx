@@ -52,11 +52,12 @@ const CheckUpForm = ({ handleSave}) => {
                 name='status'
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.status}
+                // value={values.status}
                 className=' focus:outline-none bottom-1 rounded-md p-2'
                 placeholder='status'
-                defaultValue={values.status}
+                // defaultValue={values.status}
               >
+              <option value="" selected hidden></option>
               <option value="planned">planned</option>
               <option value="arrived">arrived</option>
               <option value="triaged">triaged</option>

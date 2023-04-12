@@ -2,10 +2,14 @@ import UserTab from "../components/UserTab";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios, { all } from "axios";
+import ModalTemplate from "../components/Modal/Modal";
+
+import AddPatientForm from "../components/PatientsPage/AddPatientForm";
 
 const AllPatients = () => {
   const [allPatients, setAllPatients] = useState([]);
   const currentPractitioner = "956533b9-846b-41c6-8e92-5816a74256d4";
+  const [addPatient, setAddPatient] = useState(false);
 
   function getValuesFromMap(map) {
     return Array.from(map.values());
@@ -31,6 +35,34 @@ const AllPatients = () => {
     }
   }
 
+  async function createPatient(data) {
+    try {
+      const response = await axios.post(`http://localhost:3000/patients/`, {
+        gender: data.gender,
+        name: [
+          {
+            family: data.lastName,
+            given: [data.firstName],
+            use: "official",
+          },
+        ],
+        birthDate: `${data?.birthDate}`,
+        resourceType: "Patient",
+      });
+      console.log(response.data);
+      window.location.reload();
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  function handleAddPatient() {
+    setAddPatient(true);
+  }
+  function closeModal() {
+    setAddPatient(false);
+  }
+
   useEffect(() => {
     getAllPatients();
   }, []);
@@ -41,9 +73,20 @@ const AllPatients = () => {
         <div className='flex justify-between items-center mb-4 bg-blue-500 p-2 rounded-md'>
           <p className='text-[45px] font-dmserif text-white'>All Patients</p>
           <div>
-            <button className='px-4 py-2 bg-blue-300 text-white rounded-md'>
+            <button
+              onClick={handleAddPatient}
+              className='px-4 py-2 mr-2 bg-blue-300 text-white rounded-md'
+            >
               Create a patient
             </button>
+
+            <ModalTemplate
+              openModal={handleAddPatient}
+              open={addPatient}
+              closeModal={closeModal}
+            >
+              <AddPatientForm handleSave={createPatient}></AddPatientForm>
+            </ModalTemplate>
           </div>
         </div>
         <UserTab
