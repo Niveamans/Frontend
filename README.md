@@ -63,6 +63,7 @@ Improved collaboration and data sharing: Storing patient data in the cloud allow
 - Appointment scheduling and management
 - Secure messaging between patients and providers
 - Patient portal for self-service features and information access
+- Remove patient from current list of patients of practitioner
 
 
 ## Technologies Used
