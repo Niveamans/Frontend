@@ -5,6 +5,10 @@ A Patient management solution that solves the issue of data interoperability and
 
 
 ## Abstract
+
+**There is a lack of interoperability and availability of medical data across different platforms and even across different deparments in an organization** 
+Helth. is an attempt at solving this issue using cloud storage and cloud computing capabilities provided by Google Could Platform.
+
 This is **proof of concept** of a frontend client that provides a comprehensive solution for managing patient records and encounters for healthcare practitioners. With the ability to view and manage patient records, add new patients, and update existing ones, practitioners can easily keep track of their patients' medical histories. Additionally, practitioners can add observations to specific encounters and view a list of all encounters for a patient.
 
 This frontend client adheres to the FHIR standard, providing a standard way to store medical resource data. It also doubles as an electronic health record, providing a secure and convenient way for practitioners to manage patient records. With an intuitive user interface and a range of features, this frontend client is an essential tool for healthcare practitioners looking to improve their patient management processes.
