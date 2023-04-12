@@ -29,8 +29,11 @@ async function addPatientTo(patient, practitionerId) {
         name: patient.name,
       }
     );
+
+    // console.log(response.data);
+    window.location.reload();
   } catch (error) {
-    console.error(error);
+    console.log(error);
   }
 }
 
