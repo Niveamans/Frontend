@@ -1,9 +1,25 @@
-# Frontend
-Client for the Patient management cum Electronic health record server. 
 
-# Patient Management System
 
-This web-based application is a patient management cum electronic health record system that allows healthcare providers to manage patient records. The application uses a FHIR API hosted on the Google Cloud Platform (GCP) VM instance to perform CRUD (Create, Read, Update, Delete) operations on patient, practitioner, encounter and observation resources.
+# Helth. Patient Management System
+
+
+## Abstract
+This frontend client provides a comprehensive solution for managing patient records and encounters for healthcare practitioners. With the ability to view and manage patient records, add new patients, and update existing ones, practitioners can easily keep track of their patients' medical histories. Additionally, practitioners can add observations to specific encounters and view a list of all encounters for a patient.
+
+This frontend client adheres to the FHIR standard, providing a standard way to store medical resource data. It also doubles as an electronic health record, providing a secure and convenient way for practitioners to manage patient records. With an intuitive user interface and a range of features, this frontend client is an essential tool for healthcare practitioners looking to improve their patient management processes.
+
+
+## Why Helth.
+Healthcare providers need to access patient data quickly and easily: Storing patient data in the cloud allows healthcare providers to access patient records from anywhere with an internet connection. This means they can quickly access critical information and provide better care to patients.
+
+FHIR is the industry standard for healthcare data interoperability: The FHIR standard is designed to make it easy for different healthcare systems to share data with each other. This means that healthcare providers can use different systems to store and retrieve patient data, as long as they all support the FHIR standard.
+
+Cloud storage is scalable and cost-effective: Storing patient data in the cloud allows healthcare providers to scale their storage capacity up or down as needed. This means they can store more data as their practice grows, without having to worry about managing physical storage devices. Additionally, cloud storage is often more cost-effective than on-premises storage solutions.
+
+Improved data security and compliance: Cloud storage providers are responsible for maintaining the security and compliance of patient data stored on their platforms. This means that healthcare providers can rely on cloud storage providers to implement security best practices and comply with industry regulations such as HIPAA.
+
+Improved collaboration and data sharing: Storing patient data in the cloud allows healthcare providers to collaborate and share data with other providers and organizations more easily. This means that patient data can be shared more quickly and securely, leading to better patient outcomes.
+
 
 ## Features
 
@@ -32,6 +48,10 @@ This web-based application is a patient management cum electronic health record 
 - Export FHIR resources 
 - Develop an interface for the patient to be able to manage their appointments 
 - Interface doubles as a Electronic health record that adheres to current FHIR standards
+- Integration with electronic health record systems
+- Appointment scheduling and management
+- Secure messaging between patients and providers
+- Patient portal for self-service features and information access
 
 
 ## Technologies Used
