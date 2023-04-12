@@ -52,10 +52,10 @@ Improved collaboration and data sharing: Storing patient data in the cloud allow
 
 ## Potential features
 
-- Export and import DICOM instances
+- Export and import DICOM instances using the GCP Healthcare API
 - View DICOM instances
 - Link DICOM instances to encounter and in essence the patient resource
-- De-identify the patient's records
+- De-identify the patient's records using GCP Healthcare API
 - Use de-identified patient data for Research, ML and Big query purposes
 - Export FHIR resources 
 - Develop an interface for the patient to be able to manage their appointments 
