@@ -17,7 +17,7 @@ const Users = () => {
   async function getUsersOf(practitionerId) {
     try {
       const response = await axios.get(
-        `http://localhost:3000/practitioners/${practitionerId}`,
+        `http://34.131.154.157/practitioners/${practitionerId}`,
         {
           headers: {
             function: "getPatients",

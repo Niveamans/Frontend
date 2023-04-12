@@ -11,7 +11,7 @@ const Encounter = (props) => {
   async function fetchEncounter() {
     try {
       const response = await axios.get(
-        `http://localhost:3000/encounters/${params.encounterid}`
+        `http://34.131.154.157/encounters/${params.encounterid}`
       );
 
       setEncounter(response.data);
@@ -32,17 +32,17 @@ const Encounter = (props) => {
     props.handleEncounter(encounter);
 
     return (
-      <div className='flex flex-col bg-blue-300 rounded-lg p-6 gap-4'>
-        <div className='flex justify-between'>
-          <p className='font-dmserif text-white md:text-[45px] text-3xl'>
+      <div className="flex flex-col bg-blue-300 rounded-lg p-6 gap-4">
+        <div className="flex justify-between">
+          <p className="font-dmserif text-white md:text-[45px] text-3xl">
             Encounter
           </p>
           <button onClick={props.handleEdit}>
-            <Edit className='fill-white w-8 hover:w-12 hover:transition-all hover:duration-300' />
+            <Edit className="fill-white w-8 hover:w-12 hover:transition-all hover:duration-300" />
           </button>
         </div>
-        <div className='p-8 gap-2 bg-blue-500 rounded-lg md:text-xl text-lg'>
-          <div className='px-6 py-2 flex flex-row justify-between'>
+        <div className="p-8 gap-2 bg-blue-500 rounded-lg md:text-xl text-lg">
+          <div className="px-6 py-2 flex flex-row justify-between">
             <div>
               Status:{" "}
               {encounter.status.charAt(0).toUpperCase() +
@@ -50,15 +50,15 @@ const Encounter = (props) => {
             </div>
             <div></div>
           </div>
-          <div className='px-6 py-2 flex flex-row justify-between'>
+          <div className="px-6 py-2 flex flex-row justify-between">
             <div>Location: Bangalore</div>
             <div></div>
           </div>
-          <div className='px-6 py-2 flex flex-row justify-between'>
+          <div className="px-6 py-2 flex flex-row justify-between">
             <div>Period Start: {startDate}</div>
             <div></div>
           </div>
-          <div className='px-6 py-2 flex flex-row justify-between'>
+          <div className="px-6 py-2 flex flex-row justify-between">
             <div>Period End: {endDate}</div>
             <div></div>
           </div>

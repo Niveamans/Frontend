@@ -21,7 +21,7 @@ async function addPatientTo(patient, practitionerId) {
     }
 
     const response = await axios.put(
-      `http://localhost:3000/patients/${patient.id}`,
+      `http://34.131.154.157/patients/${patient.id}`,
       {
         birthDate: patient.birthDate,
         gender: patient.gender,
@@ -37,9 +37,9 @@ async function addPatientTo(patient, practitionerId) {
 const UserTab = (props) => {
   return (
     <>
-      <div className='flex justify-between'>
-        <Link className='w-[90%]' to={`/patient/${props.id}`}>
-          <div className='flex bg-blue-500 text-white justify-evenly rounded-md p-5 mb-4 drop-shadow font-poppins'>
+      <div className="flex justify-between">
+        <Link className="w-[90%]" to={`/patient/${props.id}`}>
+          <div className="flex bg-blue-500 text-white justify-evenly rounded-md p-5 mb-4 drop-shadow font-poppins">
             <div>{props.serial}</div>|<div>{props.name}</div>|
             <div>{props.age}</div>|<div>{props.sex}</div>{" "}
           </div>

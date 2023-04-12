@@ -20,7 +20,7 @@ const Encounter = () => {
   async function createObservation(data) {
     try {
       const now = new Date();
-      const response = await axios.post(`http://localhost:3000/observations/`, {
+      const response = await axios.post(`http://34.131.154.157/observations/`, {
         code: {
           coding: [
             {
@@ -48,7 +48,6 @@ const Encounter = () => {
         },
       });
       window.location.reload();
-
     } catch (e) {
       console.log(e);
     }
@@ -66,7 +65,7 @@ const Encounter = () => {
 
     console.log(newData);
     const response = await axios.put(
-      `http://localhost:3000/encounters/${params.encounterid}`,
+      `http://34.131.154.157/encounters/${params.encounterid}`,
       newData
     );
     console.log(response);
@@ -95,7 +94,7 @@ const Encounter = () => {
   }
 
   return (
-    <div className='flex md:flex-row flex-col md:items-start w-full gap-2'>
+    <div className="flex md:flex-row flex-col md:items-start w-full gap-2">
       <EncounterView
         handleEncounter={handleEncounter}
         handleEdit={handleEdit}

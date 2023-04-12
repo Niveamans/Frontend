@@ -7,13 +7,10 @@ import EditObservationForm from "./EditObservationForm";
 const ObservationDetails = (props) => {
   const [isEditObservation, setEditObservation] = useState(false);
 
-
   async function deleteObservation() {
-
     try {
       const response = await axios.delete(
-        `http://localhost:3000/observations/${props.element.resource.id}`,
-        
+        `http://34.131.154.157/observations/${props.element.resource.id}`
       );
 
       window.location.reload();
@@ -24,10 +21,10 @@ const ObservationDetails = (props) => {
 
   async function updateObservation(data) {
     console.log(data);
-    
+
     try {
       const response = await axios.put(
-        `http://localhost:3000/observations/${data.id}`,
+        `http://34.131.154.157/observations/${data.id}`,
         data
       );
       console.log(response);

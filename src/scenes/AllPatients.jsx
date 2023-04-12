@@ -22,7 +22,7 @@ const AllPatients = () => {
 
   async function getAllPatients() {
     try {
-      const response = await axios.get(`http://localhost:3000/patients`, {
+      const response = await axios.get(`http://34.131.154.157/patients`, {
         headers: {
           function: "getAllPatients",
         },
@@ -39,24 +39,24 @@ const AllPatients = () => {
 
   return (
     <>
-      <div className='w-5/6 mx-auto p-4 bg-blue-300 rounded-b-lg font-poppins'>
-        <div className='flex justify-between items-center mb-4'>
-          <p className='text-[45px] font-dmserif text-white'>All Patients</p>
+      <div className="w-5/6 mx-auto p-4 bg-blue-300 rounded-b-lg font-poppins">
+        <div className="flex justify-between items-center mb-4">
+          <p className="text-[45px] font-dmserif text-white">All Patients</p>
           <div>
-            <button className='px-4 py-2 mr-2 bg-blue-500 text-white rounded-md'>
+            <button className="px-4 py-2 mr-2 bg-blue-500 text-white rounded-md">
               Create a patient
             </button>
-            <button className='px-4 py-2 bg-red-400 text-white rounded-md'>
+            <button className="px-4 py-2 bg-red-400 text-white rounded-md">
               Logout
             </button>
           </div>
         </div>
         <UserTab
-          serial='S.No'
-          name='Name'
-          sex='Sex'
-          age='age'
-          action='Action'
+          serial="S.No"
+          name="Name"
+          sex="Sex"
+          age="age"
+          action="Action"
         />
 
         {allPatients.map((patient, index) => {
