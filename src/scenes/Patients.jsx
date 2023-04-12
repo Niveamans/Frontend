@@ -17,31 +17,31 @@ const Users = () => {
     return Math.abs(age_dt.getUTCFullYear() - 1970);
   }
 
-  async function createPatient(data){
-    try{
-      const response = await axios.post(`http://localhost:3000/patients/`,{
-        gender : data.gender,
-        name : [
+  async function createPatient(data) {
+    try {
+      const response = await axios.post(`http://localhost:3000/patients/`, {
+        gender: data.gender,
+        name: [
           {
-            family : data.firstName,
-            given : [
-              data.lastName
+            family:
+              data.lastName.charAt(0).toUpperCase() + data.lastName.slice(1),
+            given: [
+              data.firstName.charAt(0).toUpperCase() + data.firstName.slice(1),
             ],
-            use : "official"
-          }
+            use: "official",
+          },
         ],
-        generalPractitioner : [
+        generalPractitioner: [
           {
-            reference : `Practitioner/${currentPractitioner}`
-          }
+            reference: `Practitioner/${currentPractitioner}`,
+          },
         ],
-        birthDate : `${data?.birthDate}`,
-        resourceType : "Patient"
-      })
+        birthDate: `${data?.birthDate}`,
+        resourceType: "Patient",
+      });
       console.log(response.data);
       window.location.reload();
-    }
-    catch(e){
+    } catch (e) {
       console.log(e);
     }
   }
@@ -80,28 +80,25 @@ const Users = () => {
 
   return (
     <>
-      <div className="w-5/6 mx-auto p-4 bg-blue-300 rounded-b-lg font-poppins">
-        <div className="flex justify-between items-center mb-4">
-          <p className="text-[45px] font-dmserif text-white">Your Patients</p>
+      <div className='w-full py-12 mx-auto p-4 bg-blue-300 rounded-b-lg font-poppins'>
+        <div className='flex justify-between items-center mb-4 bg-blue-500 p-2 rounded-md'>
+          <p className='text-[45px] font-dmserif text-white'>Your Patients</p>
           <div>
             <button
               onClick={handleAddPatient}
-              className="px-4 py-2 mr-2 bg-blue-500 text-white rounded-md"
+              className='px-4 py-2 mr-2 bg-blue-300 text-white rounded-md'
             >
               Create a patient
-            </button>
-            <button className="px-4 py-2 bg-red-400 text-white rounded-md">
-              Logout
             </button>
           </div>
         </div>
         <UserTab
-          serial="S.No"
-          name="Name"
-          sex="Sex"
-          age="age"
-          action="Action"
-          id=""
+          serial='S.No'
+          name='Name'
+          sex='Sex'
+          age='age'
+          action='Action'
+          id=''
         />
 
         {patients.map((patient, index) => {
