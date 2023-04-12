@@ -85,9 +85,9 @@ const Patients = () => {
   return (
     <div className="flex md:flex-row flex-col items-center md:items-start gap-2 text-[17px]">
       <PatientDetails data={userData}></PatientDetails>
-      <div className="flex flex-col w-full max-h-screen gap-2 p-5 py-8 bg-blue-300 rounded-b-lg">
-        <div className="flex justify-between mb-5">
-          <h1 className="font-dmserif md:text-[45px] text-xl text-white">
+      <div className='flex flex-col w-full max-h-screen gap-2 p-5 py-8 bg-blue-300 rounded-b-lg'>
+        <div className='flex justify-between mb-5'>
+          <h1 className='font-dmserif md:text-[45px] text-xl text-white'>
             Checkups{" "}
           </h1>
 

@@ -29,7 +29,7 @@ const ObservationView = (props) => {
   }, [props.encounterId]);
 
   return (
-    <div className='md:w-[80%] w-full flex flex-col p-6 bg-blue-300 rounded-lg font-poppins gap-2'>
+    <div className='md:w-[80%] w-full flex flex-col p-6 bg-blue-300 rounded-b-lg font-poppins gap-2'>
       <div className='flex flex-row justify-between items-center mb-4'>
         <p className='text-[45px] font-dmserif text-white px-8'>Observations</p>
         <button
