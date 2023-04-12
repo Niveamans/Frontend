@@ -50,6 +50,14 @@ Improved collaboration and data sharing: Storing patient data in the cloud allow
 
 ## Features
 
+In this proof of concept, you are doctor Madara Uchiha. 
+
+* You have a **Your Patients** page, showcasing all your current patients
+* You have an **All Patients** page, showcasing all patients in the database
+* Each patient has their own **Patient** page, showcasing some general info and all their encounters in the past
+* Each encounter has its own page, showcasing basic info about the encounter itself and all observations made in that encounter event
+ 
+
 - View a list of all patients
 - Create a new patient
 - Add an existing patient into current patients list of the doctor
