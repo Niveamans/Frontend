@@ -58,6 +58,7 @@ Improved collaboration and data sharing: Storing patient data in the cloud allow
 ## Technologies Used
 
 - React: Front-end JavaScript library for building user interfaces
+- Tailwind CSS : CSS Framework for building custom user interfaces 
 - Node.js: JavaScript runtime environment for server-side development
 - Express: Web application framework for Node.js
 - Healthcare API: GCP healthcare API
