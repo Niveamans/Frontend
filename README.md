@@ -5,7 +5,22 @@ A Patient management solution that solves the issue of data interoperability and
 
 
 ## Abstract
+
+
+**There is a lack of interoperability and availability of medical data across different platforms and even across different deparments in an organization** 4
+
+- The Office of the National Coordinator for Health Information Technology (ONC) states that "interoperability is the key to a smarter, patient-centered healthcare system." (source: https://www.healthit.gov/topic/interoperability)
+
+- In a report by the RAND Corporation, it was found that "interoperability failures can lead to serious consequences, including medical errors, incorrect diagnoses, and delayed care." (source: https://www.rand.org/pubs/research_reports/RR308.html)
+
+- According to a study published in the Journal of the American Medical Association, "the lack of interoperability between electronic health record systems continues to be a major barrier to the efficient exchange of health information." (source: https://jamanetwork.com/journals/jama/fullarticle/2676123)
+
+
+Helth. is an attempt at solving this issue using cloud storage and cloud computing capabilities provided by Google Could Platform.
+
+
 This is **proof of concept** of a frontend client that provides a comprehensive solution for managing patient records and encounters for healthcare practitioners. With the ability to view and manage patient records, add new patients, and update existing ones, practitioners can easily keep track of their patients' medical histories. Additionally, practitioners can add observations to specific encounters and view a list of all encounters for a patient.
+
 
 This frontend client adheres to the FHIR standard, providing a standard way to store medical resource data. It also doubles as an electronic health record, providing a secure and convenient way for practitioners to manage patient records. With an intuitive user interface and a range of features, this frontend client is an essential tool for healthcare practitioners looking to improve their patient management processes.
 
@@ -34,6 +49,14 @@ Improved collaboration and data sharing: Storing patient data in the cloud allow
 
 
 ## Features
+
+In this proof of concept, you are doctor Madara Uchiha. 
+
+* You have a **Your Patients** page, showcasing all your current patients
+* You have an **All Patients** page, showcasing all patients in the database
+* Each patient has their own **Patient** page, showcasing some general info and all their encounters in the past
+* Each encounter has its own page, showcasing basic info about the encounter itself and all observations made in that encounter event
+ 
 
 - View a list of all patients
 - Create a new patient
