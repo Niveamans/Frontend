@@ -1,6 +1,7 @@
 
 
-# Helth. Patient Management System
+# Helth. 
+A Patient management solution that solves the issue of data interoperability and accessibility in the healthcare industry.
 
 
 ## Abstract
