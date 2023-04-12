@@ -1,8 +1,6 @@
 import UserTab from "../components/UserTab";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Search from "../components/Dashboard/Search";
-import ModalTemplate from "../components/Modal/Modal";
 import axios, { all } from "axios";
 
 const AllPatients = () => {
@@ -39,15 +37,12 @@ const AllPatients = () => {
 
   return (
     <>
-      <div className='w-5/6 mx-auto p-4 bg-blue-300 rounded-b-lg font-poppins'>
-        <div className='flex justify-between items-center mb-4'>
+      <div className='w-full py-12 mx-auto p-4 bg-blue-300 rounded-b-lg font-poppins'>
+        <div className='flex justify-between items-center mb-4 bg-blue-500 p-2 rounded-md'>
           <p className='text-[45px] font-dmserif text-white'>All Patients</p>
           <div>
-            <button className='px-4 py-2 mr-2 bg-blue-500 text-white rounded-md'>
+            <button className='px-4 py-2 bg-blue-300 text-white rounded-md'>
               Create a patient
-            </button>
-            <button className='px-4 py-2 bg-red-400 text-white rounded-md'>
-              Logout
             </button>
           </div>
         </div>

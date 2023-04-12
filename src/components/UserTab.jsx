@@ -20,15 +20,16 @@ async function addPatientTo(patient, practitionerId) {
       ];
     }
 
-    const response = await axios.put(
-      `http://localhost:3000/patients/${patient.id}`,
-      {
+    const response = await axios
+      .put(`http://localhost:3000/patients/${patient.id}`, {
         birthDate: patient.birthDate,
         gender: patient.gender,
         generalPractitioner: generalPractitioner,
         name: patient.name,
-      }
-    );
+      })
+      .then((v) => {
+        window.location.reload();
+      });
   } catch (error) {
     console.error(error);
   }
