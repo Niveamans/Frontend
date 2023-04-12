@@ -27,10 +27,12 @@ async function addPatientTo(patient, practitionerId) {
         gender: patient.gender,
         generalPractitioner: generalPractitioner,
         name: patient.name,
-      }
-    );
+      })
+      .then((v) => {
+        window.location.reload();
+      });
   } catch (error) {
-    console.error(error);
+    console.log(error);
   }
 }
 

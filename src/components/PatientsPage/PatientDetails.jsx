@@ -70,7 +70,7 @@ const PatientDetails = ({ data }) => {
   let name = data.name[0];
   console.log(name);
   return (
-    <div className="bg-blue-300 p-5 w-full md:w-[40%] rounded-lg">
+    <div className="bg-blue-300 p-5 w-full md:w-[40%] rounded-b-lg">
       <div className="grid">
         {/* <div className='mx-auto my-4'>
           <img

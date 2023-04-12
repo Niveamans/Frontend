@@ -101,8 +101,8 @@ const EditForm = ({ data, handleSave}) => {
              
               <select
               name='gender'
-              value={values.gender}
-              defaultValue={values.gender}
+              // value={values.gender}
+              // defaultValue={values.gender}
               className='rounded-md p-2 '
               placeholder='gender'
               onChange={handleChange}
@@ -110,9 +110,10 @@ const EditForm = ({ data, handleSave}) => {
                 
                 
               >
+              <option value="" selected hidden></option>
               <option value={"male"}>male</option>
               <option value={"female"}>female</option>
-              <option value={"others"}>others</option>
+              <option value={"other"}>others</option>
 
               </select>
 

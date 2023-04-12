@@ -32,9 +32,9 @@ const Encounter = (props) => {
     props.handleEncounter(encounter);
 
     return (
-      <div className="flex flex-col bg-blue-300 rounded-lg p-6 gap-4">
-        <div className="flex justify-between">
-          <p className="font-dmserif text-white md:text-[45px] text-3xl">
+      <div className='flex flex-col bg-blue-300 rounded-b-lg p-6 gap-4'>
+        <div className='flex justify-between'>
+          <p className='font-dmserif text-white md:text-[45px] text-3xl'>
             Encounter
           </p>
           <button onClick={props.handleEdit}>
@@ -54,12 +54,12 @@ const Encounter = (props) => {
             <div>Location: Bangalore</div>
             <div></div>
           </div>
-          <div className="px-6 py-2 flex flex-row justify-between">
-            <div>Period Start: {startDate}</div>
+          <div className='px-6 py-2 flex flex-row justify-between'>
+            <div>Period Start: {startDate || <>Nil</>}</div>
             <div></div>
           </div>
-          <div className="px-6 py-2 flex flex-row justify-between">
-            <div>Period End: {endDate}</div>
+          <div className='px-6 py-2 flex flex-row justify-between'>
+            <div>Period End: {endDate || <>Nil</>}</div>
             <div></div>
           </div>
         </div>
